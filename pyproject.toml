@@ -1,0 +1,34 @@
+[project]
+name = "spec-craft"
+version = "0.1.0"
+description = "Obsidian-based Spec-Driven Development (SDD) toolkit with MCP and spec-kit integration."
+authors = [
+    {name = "Akihiro", email = "akihiro@example.com"}
+]
+dependencies = [
+    "fastmcp>=0.1.0",
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "gitpython>=3.1.0"
+]
+readme = "README.md"
+requires-python = ">=3.10"
+
+[project.scripts]
+spec-craft = "spec_craft.main:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+]
