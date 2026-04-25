@@ -13,6 +13,9 @@ Tests or validation logic must be defined in the plan phase and executed immedia
 ### V. Package Management with uv
 We use `uv` for all Python package management, including dependency installation, environment management, and script execution. Standard `pip` should be avoided in favor of `uv sync` and `uv run`.
 
+### VI. Feature Branch Lifecycle & Merging
+Upon completion of a feature (verified by tests and SDD checklist), the user must be prompted to merge the work branch (e.g., `001-...`) into `main`. The AI must explicitly warn the user if unmerged branches exist before starting a new `specify` cycle to prevent configuration drift.
+
 ## Development Workflow
 
 ### IV. Cross-Domain Generative SDD
