@@ -4,7 +4,11 @@ Obsidian-based Spec-Driven Development (SDD) toolkit with MCP and spec-kit integ
 
 ## Concept
 
-`spec-craft` is a bridge between high-level roadmaps in Obsidian and tactical implementation using `spec-kit`. It provides an MCP (Model Context Protocol) server to help LLMs understand the project's "soul" and "evolution".
+`spec-craft` is a bridge between high-level roadmaps in Obsidian and tactical implementation using `spec-kit`.
+
+### Strategy vs Tactics
+- **Strategy (Obsidian)**: Defines the "What" and "Why". It holds the project's soul, long-term roadmap, and domain-specific principles (Manga storyboards, CAD logic, etc.).
+- **Tactics (spec-kit)**: Defines the "How". It executes iterative SDD cycles (Specify → Plan → Implement) to generate concrete code and assets based on the strategy.
 
 ## Installation
 
