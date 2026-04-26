@@ -14,7 +14,7 @@ Tests or validation logic must be defined in the plan phase and executed immedia
 We use `uv` for all Python package management, including dependency installation, environment management, and script execution. Standard `pip` should be avoided in favor of `uv sync` and `uv run`.
 
 ### VI. Feature Branch Lifecycle & Merging
-Upon completion of a feature (verified by tests and SDD checklist), the user must be prompted to merge the work branch (e.g., `001-...`) into `main`. The AI must explicitly warn the user if unmerged branches exist before starting a new `specify` cycle to prevent configuration drift.
+Upon completion of a feature (verified by tests and SDD checklist), the user must be prompted to merge the work branch (e.g., `001-...`) into `main`. **Completed feature branches MUST NOT be deleted.** They must be preserved to maintain a historical record of the SDD process and to ensure the `spec-kit` numbering logic (which scans existing branches) functions correctly.
 
 ### VII. In-Code Prompt Definition (Self-Contained Logic)
 To minimize user configuration and ensure consistency, all SDD-specific instructions, storyboarding rules, and domain-specific guidance must be defined as `Prompts` within the FastMCP server code. This ensures that the AI agent's behavior and domain knowledge are bundled directly with the tool.
