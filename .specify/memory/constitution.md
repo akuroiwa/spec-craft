@@ -16,6 +16,9 @@ We use `uv` for all Python package management, including dependency installation
 ### VI. Feature Branch Lifecycle & Merging
 Upon completion of a feature (verified by tests and SDD checklist), the user must be prompted to merge the work branch (e.g., `001-...`) into `main`. The AI must explicitly warn the user if unmerged branches exist before starting a new `specify` cycle to prevent configuration drift.
 
+### VII. In-Code Prompt Definition (Self-Contained Logic)
+To minimize user configuration and ensure consistency, all SDD-specific instructions, storyboarding rules, and domain-specific guidance must be defined as `Prompts` within the FastMCP server code. This ensures that the AI agent's behavior and domain knowledge are bundled directly with the tool.
+
 ## Development Workflow
 
 ### IV. Cross-Domain Generative SDD
