@@ -5,6 +5,7 @@ from ..core.detector import WorkspaceDetector
 from ..core.manager import ConstitutionManager
 from ..core.parser import StoryboardParser
 from ..core.agent import AgentManager
+from ..core.executor import ScriptExecutor
 
 def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
     """Creates and configures the FastMCP server instance.
@@ -19,6 +20,7 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
     # Initialize components
     parser = StoryboardParser(detector.root_path / "obsidian")
     agent_manager = AgentManager(detector.root_path)
+    executor = ScriptExecutor(detector.root_path)
     
     from . import prompts
 
@@ -47,6 +49,16 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
         status = agent_manager.get_extension_status(required_extensions)
         return [info.model_dump() for info in status]
 
+    @mcp.tool()
+    def execute_tactical_script(script_name: str, arguments: Optional[List[str]] = None) -> dict:
+        """Executes a spec-kit tactical script from .specify/scripts/bash/.
+        
+        Args:
+            script_name: The name of the script file (e.g., 'check-prerequisites.sh').
+            arguments: Optional list of command-line arguments for the script.
+        """
+        return executor.execute(script_name, arguments)
+
     @mcp.prompt()
     def sdd_strategy_tactics() -> str:
         """Explains the Strategy (Obsidian) vs Tactics (spec-kit) relationship."""
@@ -66,6 +78,16 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
     def cad_design_guide() -> str:
         """Provides guidance for CAD modeling (JSCAD) within the SDD workflow."""
         return prompts.CAD_GUIDE
+
+    @mcp.prompt()
+    def bootstrap_constitution() -> str:
+        """Provides a curated list of SDD rules for new project constitutions."""
+        return prompts.BOOTSTRAP_RULES
+
+    @mcp.prompt()
+    def agent_extension_guide() -> str:
+        """Shows where to install spec-kit extensions for specific AI agents."""
+        return prompts.AGENT_EXTENSION_GUIDE_TEMPLATE
 
     return mcp
 
