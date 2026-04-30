@@ -7,14 +7,26 @@ Obsidian-based Spec-Driven Development (SDD) toolkit with MCP and spec-kit integ
 `spec-craft` is a bridge between high-level roadmaps in Obsidian and tactical implementation using `spec-kit`.
 
 ### Strategy vs Tactics
-- **Strategy (Obsidian)**: Defines the "What" and "Why". It holds the project's soul, long-term roadmap, and domain-specific principles (Manga storyboards, CAD logic, etc.).
+- **Strategy (Obsidian)**: Defines the "What" and "Why". It holds the project's soul, long-term roadmap, and domain-specific principles (Manga storyboards, CAD logic, Blender Bonkei rules, etc.).
 - **Tactics (spec-kit)**: Defines the "How". It executes iterative SDD cycles (Specify → Plan → Implement) to generate concrete code and assets based on the strategy.
 
 ## Installation
 
 ```bash
+uv sync
 pip install -e .
 ```
+
+### spec-kit Extension Setup
+To enable slash commands (e.g., `/speckit.obsidian-analyze`), copy the `extension/` folder to your project's `.specify/extensions/spec-craft/` directory.
+
+## Usage
+
+### Build Output Organization
+All generated assets are stored in the `build/` directory:
+- `build/manga/<lang>/`: Translated SVG scenes.
+- `build/cad/universal/`: Parametric STL models.
+- `build/3d/universal/`: Blender Python scripts for scene construction.
 
 ## Usage
 

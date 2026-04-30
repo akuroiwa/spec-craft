@@ -67,3 +67,22 @@ console.log('Mock Success');
     assert "build/cad/universal/part.stl" in result_path
     assert (temp_workspace / result_path).is_file()
     assert (temp_workspace / result_path).with_suffix(".js").is_file()
+
+@pytest.mark.anyio
+async def test_generate_blender_script_tool(temp_workspace):
+    """Verify the generate_blender_script tool creates a .py file."""
+    mcp = create_mcp_server(temp_workspace)
+    
+    scene_spec = {"width": 20, "elements": [{"type": "tree"}]}
+    result_path_str = await mcp.call_tool("generate_blender_script", {
+        "scene_spec": scene_spec,
+        "output_name": "forest.py"
+    })
+    
+    result_path = result_path_str.content[0].text.strip('"')
+    
+    assert "build/3d/universal/forest.py" in result_path
+    assert (temp_workspace / result_path).is_file()
+    content = (temp_workspace / result_path).read_text()
+    assert "import bpy" in content
+    assert "create_bonkei_base(20," in content

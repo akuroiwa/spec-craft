@@ -217,3 +217,4 @@ _research_references/
 *.pyc
 .venv/
 node_modules/
+# extension/

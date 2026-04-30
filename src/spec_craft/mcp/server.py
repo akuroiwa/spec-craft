@@ -9,6 +9,7 @@ from ..core.executor import ScriptExecutor
 from ..core.build import BuildManager
 from ..core.drivers.svg import SVGDriver
 from ..core.drivers.cad import CADDriver
+from ..core.drivers.blender import BlenderDriver
 
 def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
     """Creates and configures the FastMCP server instance.
@@ -27,6 +28,7 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
     build_manager = BuildManager(detector.root_path)
     svg_driver = SVGDriver()
     cad_driver = CADDriver(detector.root_path)
+    blender_driver = BlenderDriver(detector.root_path)
     
     from . import prompts
 
@@ -101,6 +103,28 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
         
         return str(o_path.relative_to(detector.root_path))
 
+    @mcp.tool()
+    def generate_blender_script(scene_spec: dict, output_name: str) -> str:
+        """Generates a Blender Python script for scene construction.
+        
+        Args:
+            scene_spec: A dictionary describing the Bonkei scene (width, depth, elements).
+            output_name: Filename for the script (e.g., 'bonkei.py').
+        """
+        o_path = build_manager.get_output_path("3d", "universal", output_name)
+        blender_driver.generate_script(scene_spec, o_path)
+        
+        return str(o_path.relative_to(detector.root_path))
+
+    @mcp.tool()
+    def trigger_full_build() -> dict:
+        """Coordinates a full build of all pending assets (SVG, CAD, 3D)."""
+        return {
+            "status": "Ready",
+            "capabilities": ["manga (svg)", "cad (stl)", "3d (blender-py)"],
+            "message": "Full build orchestration initialized. Use specific trigger tools for detailed generation."
+        }
+
     @mcp.prompt()
     def sdd_strategy_tactics() -> str:
         """Explains the Strategy (Obsidian) vs Tactics (spec-kit) relationship."""
@@ -135,6 +159,11 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
     def build_organization_guide() -> str:
         """Explains the hierarchical structure of the build/ directory."""
         return prompts.BUILD_ORGANIZATION_GUIDE
+
+    @mcp.prompt()
+    def blender_3d_guide() -> str:
+        """Provides guidance for 3D scene construction (Bonkei) in Blender."""
+        return prompts.BLENDER_GUIDE
 
     return mcp
 

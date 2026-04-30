@@ -20,6 +20,12 @@ class SVGDriver:
 
         # Strategy 1: Replace by ID (id="key")
         for key, value in translations.items():
+            # Check root itself
+            if root.get("id") == key:
+                root.text = value
+                continue
+                
+            # Check descendants
             element = root.find(f".//*[@id='{key}']", namespaces=self.ns)
             if element is not None:
                 element.text = value

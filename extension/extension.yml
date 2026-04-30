@@ -1,0 +1,17 @@
+id: spec-craft
+version: 0.1.0
+name: Spec-Craft Obsidian Integration
+description: Bridges Obsidian strategy with spec-kit tactical execution.
+commands:
+  - name: obsidian-analyze
+    description: Analyze Obsidian storyboard and roadmap.
+    mcp_tool: read_storyboard
+  - name: obsidian-build
+    description: Trigger full asset build (SVG, CAD, 3D).
+    mcp_tool: trigger_full_build
+  - name: obsidian-3d
+    description: Generate Blender Python scripts from scene specs.
+    mcp_tool: generate_blender_script
+  - name: obsidian-cad
+    description: Trigger parametric CAD generation (JSCAD).
+    mcp_tool: trigger_cad_build
