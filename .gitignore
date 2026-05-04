@@ -218,3 +218,4 @@ _research_references/
 .venv/
 node_modules/
 # extension/
+# docs/source/locale/ (tracked but excluded from some checks)

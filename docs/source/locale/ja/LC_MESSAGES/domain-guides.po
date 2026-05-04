@@ -1,0 +1,77 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Akihiro
+# This file is distributed under the same license as the Spec-Craft package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Spec-Craft \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-04 12:42+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja\n"
+"Language-Team: ja <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../source/domain-guides.md:1
+msgid "Domain Guides"
+msgstr ""
+
+#: ../../source/domain-guides.md:3
+msgid "Spec-Craft supports multiple creative production domains."
+msgstr ""
+
+#: ../../source/domain-guides.md:5
+msgid "Manga Production"
+msgstr ""
+
+#: ../../source/domain-guides.md:6
+msgid ""
+"Define your storyboard in Obsidian. Use the `trigger_svg_build` tool to "
+"inject dialogue from your strategy into SVG templates."
+msgstr ""
+
+#: ../../source/domain-guides.md:7
+msgid "**Strategy**: YAML metadata in Obsidian."
+msgstr ""
+
+#: ../../source/domain-guides.md:8
+msgid "**Tactics**: Translated SVGs in the `build/` directory."
+msgstr ""
+
+#: ../../source/domain-guides.md:10
+msgid "CAD Modeling (JSCAD)"
+msgstr ""
+
+#: ../../source/domain-guides.md:11
+msgid ""
+"Specify geometric requirements in Obsidian. Use `trigger_cad_build` to "
+"generate JSCAD code and export STL files."
+msgstr ""
+
+#: ../../source/domain-guides.md:12
+msgid ""
+"**Visual Feedback**: AI can analyze generated SVGs to \"see\" the model's"
+" dimensions."
+msgstr ""
+
+#: ../../source/domain-guides.md:14
+msgid "3D Scene Construction (Blender)"
+msgstr ""
+
+#: ../../source/domain-guides.md:15
+msgid ""
+"Describe tray landscapes (Bonkei) in Obsidian. Use "
+"`generate_blender_script` to create Python scripts for Blender."
+msgstr ""
+
+#: ../../source/domain-guides.md:16
+msgid "**Process**: Obsidian Spec → Blender Python Script → Automated 3D Build."
+msgstr ""
+

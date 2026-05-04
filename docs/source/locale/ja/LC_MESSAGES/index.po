@@ -1,0 +1,27 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Spec-Craft\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-25 00:00+0000\n"
+"PO-Revision-Date: 2026-04-25 00:00+0000\n"
+"Last-Translator: Akihiro\n"
+"Language-Team: Japanese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+
+msgid "Spec-Craft Manual"
+msgstr "Spec-Craft マニュアル"
+
+msgid "Welcome to the Spec-Craft documentation."
+msgstr "Spec-Craft ドキュメントへようこそ。"
+
+msgid "Contents:"
+msgstr "目次:"
+
+msgid "Introduction"
+msgstr "はじめに"
+
+msgid "Spec-Craft is an Obsidian-based Spec-Driven Development (SDD) toolkit."
+msgstr "Spec-Craftは、Obsidianベースの仕様駆動開発（SDD）ツールキットです。"
