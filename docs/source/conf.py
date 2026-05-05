@@ -2,8 +2,8 @@
 
 # -- Project information -----------------------------------------------------
 project = 'Spec-Craft'
-copyright = '2026, Akihiro'
-author = 'Akihiro'
+copyright = '2026, Akihiro Kuroiwa & Gemini'
+author = 'Akihiro Kuroiwa & Gemini'
 release = '0.1.0'
 
 # -- General configuration ---------------------------------------------------

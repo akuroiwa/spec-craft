@@ -3,7 +3,8 @@ name = "spec-craft"
 version = "0.1.0"
 description = "Obsidian-based Spec-Driven Development (SDD) toolkit with MCP and spec-kit integration."
 authors = [
-    {name = "Akihiro", email = "akihiro@example.com"}
+    {name = "Akihiro Kuroiwa", email = "akuroiwa@env-reform.com"},
+    {name = "Gemini (AI Agent)"}
 ]
 dependencies = [
     "fastmcp>=0.1.0",
