@@ -1,6 +1,7 @@
 import pytest
 import json
 from pathlib import Path
+from unittest.mock import patch, MagicMock
 from spec_craft.mcp.server import create_mcp_server
 
 @pytest.mark.anyio
@@ -43,25 +44,26 @@ translations:
 @pytest.mark.anyio
 async def test_trigger_cad_build_cycle(temp_workspace):
     """Verify the CAD build cycle: Code -> STL generation."""
-    # Setup: Create a mock jscad-tool.js that actually touches the output file
-    mock_tool = """
-import fs from 'fs';
-const outPath = process.argv[4]; // -o <path>
-fs.writeFileSync(outPath, 'mock stl content');
-console.log('Mock Success');
-"""
-    (temp_workspace / "jscad-tool.js").write_text(mock_tool)
-    
     mcp = create_mcp_server(temp_workspace)
     
     jscad_code = "function main() { return cube(); }"
-    result_path_str = await mcp.call_tool("trigger_cad_build", {
-        "jscad_code": jscad_code,
-        "output_name": "part.stl"
-    })
+    
+    def mock_run_side_effect(command, **kwargs):
+        out_path = command[4]
+        from pathlib import Path
+        Path(out_path).write_text("mock stl content")
+        return MagicMock(returncode=0)
+
+    with patch("subprocess.run", side_effect=mock_run_side_effect):
+        result_path_str = await mcp.call_tool("trigger_cad_build", {
+            "jscad_code": jscad_code,
+            "output_name": "part",
+            "formats": ["stl"]
+        })
     
     # result_path_str is a ToolResult
-    result_path = result_path_str.content[0].text.strip('"')
+    data = json.loads(result_path_str.content[0].text)
+    result_path = data["stl"]
     
     # Verify output files
     assert "build/cad/universal/part.stl" in result_path

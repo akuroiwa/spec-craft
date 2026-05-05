@@ -25,8 +25,18 @@ To enable slash commands (e.g., `/speckit.obsidian-analyze`), copy the `extensio
 ### Build Output Organization
 All generated assets are stored in the `build/` directory:
 - `build/manga/<lang>/`: Translated SVG scenes.
-- `build/cad/universal/`: Parametric STL models.
+- `build/cad/universal/`: Parametric STL models and SVG projections.
 - `build/3d/universal/`: Blender Python scripts for scene construction.
+
+### 3D Preview
+To view your generated CAD models interactively, run:
+```bash
+spec-craft browse
+```
+This starts a local server and opens a Three.js viewer. You can load specific models using query parameters: `http://localhost:8080/?model=cad/universal/my_part.stl`.
+
+### Visual Feedback Loop
+When triggering a CAD build, spec-craft can generate SVG projections of the model. These are ideal for AI vision analysis, allowing your agent to "see" the dimensions and propose improvements.
 
 ## Usage
 

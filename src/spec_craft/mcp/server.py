@@ -91,17 +91,23 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
         return str(o_path.relative_to(detector.root_path))
 
     @mcp.tool()
-    def trigger_cad_build(jscad_code: str, output_name: str) -> str:
-        """Generates an STL file from JSCAD code based on Obsidian requirements.
+    def trigger_cad_build(jscad_code: str, output_name: str, formats: Optional[List[str]] = None) -> dict:
+        """Generates CAD files (STL, SVG) from JSCAD code based on Obsidian requirements.
         
         Args:
             jscad_code: The complete JSCAD source code string.
-            output_name: Filename for the generated STL (e.g., 'motor_mount.stl').
+            output_name: Filename for the generated assets (e.g., 'motor_mount'). Extension added automatically.
+            formats: Optional list of formats to generate (default: ['stl', 'svg']).
         """
-        o_path = build_manager.get_output_path("cad", "universal", output_name)
-        cad_driver.build_stl(jscad_code, o_path)
+        requested_formats = formats or ["stl", "svg"]
+        o_base = build_manager.get_output_path("cad", "universal", output_name)
         
-        return str(o_path.relative_to(detector.root_path))
+        results = cad_driver.build(jscad_code, o_base, requested_formats)
+        
+        return {
+            fmt: str(path.relative_to(detector.root_path)) 
+            for fmt, path in results.items()
+        }
 
     @mcp.tool()
     def generate_blender_script(scene_spec: dict, output_name: str) -> str:
