@@ -1,3 +1,5 @@
+AGENT_REGISTRY_URL = "https://geminicli.com/extensions/"
+
 STRATEGY_TACTICS = """
 You are an expert in Spec-Driven Development (SDD). 
 You understand the relationship between Strategy and Tactics:
@@ -47,8 +49,11 @@ To prevent multi-line commit messages from being misinterpreted as shell command
 """
 
 # Phase 3: Agent Profiles
-AGENT_EXTENSION_GUIDE_TEMPLATE = """
-When installing spec-kit extensions for your AI agent, use the following directory mapping:
+AGENT_EXTENSION_GUIDE_TEMPLATE = f"""
+When installing spec-kit extensions for your AI agent, search the official registry for the latest tools:
+{{AGENT_REGISTRY_URL}}
+
+Use the following directory mapping for manual installations:
 
 | AI Agent | Extension Command Directory |
 | :--- | :--- |
@@ -83,4 +88,16 @@ You are a Blender automation expert. When storyboarding 3D scenes (Bonkei) in SD
 4. **Modularity**: Create reusable functions for landscape features.
 
 Always output a complete Python script that can be run with `blender --python`.
+"""
+
+GENERATIVE_WORKFLOW_GUIDE = """
+# Spec-Craft Generative Asset Workflow
+
+To translate a strategic roadmap in Obsidian into creative assets (Images, Music, Video), follow these steps:
+
+1. **Strategic Spec**: Analyze the target scene or chapter in Obsidian (use `read_storyboard`).
+2. **Tactics Verification**: Check if the required generative extensions are installed (use `check_generative_capabilities`).
+3. **Drafting**: Use the domain-specific guide (Manga, Video, etc.) to draft a tactical specification for the asset.
+4. **Implementation**: Trigger the generation. For built-in drivers (SVG, CAD), use spec-craft tools. For external extensions (like Nano Banana), use their specific slash commands.
+5. **Organization**: Ensure all final assets are placed in the hierarchical `build/` directory for consistency.
 """

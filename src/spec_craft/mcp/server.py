@@ -4,7 +4,7 @@ from fastmcp import FastMCP
 from ..core.detector import WorkspaceDetector
 from ..core.manager import ConstitutionManager
 from ..core.parser import StoryboardParser
-from ..core.agent import AgentManager
+from ..core.agent import AgentManager, GenerativeDomain
 from ..core.executor import ScriptExecutor
 from ..core.build import BuildManager
 from ..core.drivers.svg import SVGDriver
@@ -56,6 +56,20 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
         """
         status = agent_manager.get_extension_status(required_extensions)
         return [info.model_dump() for info in status]
+
+    @mcp.tool()
+    def check_generative_capabilities(domain: str) -> dict:
+        """Verifies if the required tools for a creative domain are available.
+        
+        Args:
+            domain: The creative domain (e.g., 'manga', 'music', 'video', 'cad', '3d').
+        """
+        try:
+            gen_domain = GenerativeDomain(domain.lower())
+            capability = agent_manager.check_generative_capabilities(gen_domain)
+            return capability.model_dump()
+        except ValueError:
+            return {"error": f"Invalid domain: {domain}. Supported domains are: {[d.value for d in GenerativeDomain]}"}
 
     @mcp.tool()
     def execute_tactical_script(script_name: str, arguments: Optional[List[str]] = None) -> dict:
@@ -159,7 +173,12 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
     @mcp.prompt()
     def agent_extension_guide() -> str:
         """Shows where to install spec-kit extensions for specific AI agents."""
-        return prompts.AGENT_EXTENSION_GUIDE_TEMPLATE
+        return prompts.AGENT_EXTENSION_GUIDE_TEMPLATE.format(AGENT_REGISTRY_URL=prompts.AGENT_REGISTRY_URL)
+
+    @mcp.prompt()
+    def generative_workflow_guide() -> str:
+        """Explains the Strategic -> Tactics -> Implementation workflow for creative assets."""
+        return prompts.GENERATIVE_WORKFLOW_GUIDE
 
     @mcp.prompt()
     def build_organization_guide() -> str:

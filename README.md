@@ -20,6 +20,9 @@ pip install -e .
 ### spec-kit Extension Setup
 To enable slash commands (e.g., `/speckit.obsidian-analyze`), copy the `extension/` folder to your project's `.specify/extensions/spec-craft/` directory.
 
+### Discovery
+Find more AI agent extensions at the official registry: [geminicli.com/extensions/](https://geminicli.com/extensions/).
+
 ## Usage
 
 ### Build Output Organization
