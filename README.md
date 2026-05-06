@@ -23,6 +23,11 @@ To enable slash commands (e.g., `/speckit.obsidian-analyze`), copy the `extensio
 ### Discovery
 Find more AI agent extensions at the official registry: [geminicli.com/extensions/](https://geminicli.com/extensions/).
 
+## Automated Release Process
+Spec-Craft uses GitHub Actions for CI/CD:
+- **Testing**: Every push/PR triggers a test matrix across Python 3.10-3.12.
+- **Publishing**: Pushing a tag matching `v*` automatically builds and publishes the package to PyPI using Trusted Publishing.
+
 ## Usage
 
 ### Build Output Organization

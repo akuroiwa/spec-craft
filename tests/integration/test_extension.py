@@ -6,12 +6,13 @@ from spec_craft.mcp.server import create_mcp_server
 @pytest.mark.anyio
 async def test_extension_manifest_consistency():
     """Verify extension.yml commands map to existing MCP tools."""
-    project_root = Path(__file__).parent.parent.parent
-    manifest_path = project_root / "extension" / "extension.yml"
+    from importlib import resources
+    p_ext = resources.files("spec_craft.data").joinpath("extension")
+    manifest_path = p_ext.joinpath("extension.yml")
     
     assert manifest_path.is_file()
     
-    with open(manifest_path, "r") as f:
+    with manifest_path.open("r") as f:
         manifest = yaml.safe_load(f)
     
     mcp = create_mcp_server()
