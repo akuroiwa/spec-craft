@@ -38,6 +38,11 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
         return detector.get_metadata()
 
     @mcp.tool()
+    def check_environment() -> List[dict]:
+        """Detects missing prerequisites for the full Spec-Craft pipeline."""
+        return detector.check_environment()
+
+    @mcp.tool()
     def read_storyboard(path: str) -> dict:
         """Parses an Obsidian file into a structured structured object.
         
@@ -138,11 +143,11 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
 
     @mcp.tool()
     def trigger_full_build() -> dict:
-        """Coordinates a full build of all pending assets (SVG, CAD, 3D)."""
+        """Coordinates a full build of all pending assets (SVG, CAD, 3D, Architecture)."""
         return {
             "status": "Ready",
-            "capabilities": ["manga (svg)", "cad (stl)", "3d (blender-py)"],
-            "message": "Full build orchestration initialized. Use specific trigger tools for detailed generation."
+            "capabilities": ["manga (svg)", "cad (stl)", "3d (blender-py)", "architecture (ifc-py)"],
+            "message": "Full build orchestration initialized. Use domain triggers for generation."
         }
 
     @mcp.prompt()
@@ -189,6 +194,16 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
     def blender_3d_guide() -> str:
         """Provides guidance for 3D scene construction (Bonkei) in Blender."""
         return prompts.BLENDER_GUIDE
+
+    @mcp.prompt()
+    def bonsai_architectural_guide() -> str:
+        """Provides guidance for IFC-compliant modeling in Blender (Bonsai)."""
+        return prompts.BONSAI_GUIDE
+
+    @mcp.prompt()
+    def test_pypi_release_checklist() -> str:
+        """A step-by-step guide for performing the first release to Test PyPI."""
+        return prompts.TEST_PYPI_CHECKLIST
 
     return mcp
 

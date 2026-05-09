@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List
 import git
 
 class WorkspaceDetector:
@@ -47,3 +47,44 @@ class WorkspaceDetector:
             "obsidian_path": str(self.obsidian_path) if self.obsidian_path else None,
             "specify_path": str(self.specify_path) if self.specify_path else None,
         }
+
+    def check_environment(self) -> List[dict]:
+        """Detects missing prerequisites for the Spec-Craft pipeline."""
+        import shutil
+        import importlib.util
+
+        status = []
+
+        # 1. spec-kit
+        has_speckit = shutil.which("speckit") is not None or (self.root_path / ".specify").is_dir()
+        status.append({
+            "tool_name": "spec-kit",
+            "is_installed": bool(has_speckit),
+            "install_command": "pip install spec-kit" if not has_speckit else None
+        })
+
+        # 2. obsidian
+        has_obsidian = self.obsidian_path is not None
+        status.append({
+            "tool_name": "obsidian",
+            "is_installed": has_obsidian,
+            "install_command": f"mkdir -p {self.root_path}/obsidian" if not has_obsidian else None
+        })
+
+        # 3. node/npx
+        has_npx = shutil.which("npx") is not None
+        status.append({
+            "tool_name": "node/npx",
+            "is_installed": has_npx,
+            "install_command": "Visit https://nodejs.org/ to install Node.js and npx" if not has_npx else None
+        })
+
+        # 4. uv
+        has_uv = shutil.which("uv") is not None
+        status.append({
+            "tool_name": "uv",
+            "is_installed": has_uv,
+            "install_command": "curl -LsSf https://astral.sh/uv/install.sh | sh" if not has_uv else None
+        })
+
+        return status

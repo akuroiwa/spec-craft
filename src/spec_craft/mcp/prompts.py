@@ -90,6 +90,34 @@ You are a Blender automation expert. When storyboarding 3D scenes (Bonkei) in SD
 Always output a complete Python script that can be run with `blender --python`.
 """
 
+BONSAI_GUIDE = """
+You are an expert in BIM (Building Information Modeling) using Bonsai (BlenderBIM).
+When storyboarding architectural projects in SDD:
+1. **IFC Standards**: Use Industry Foundation Classes (IfcWall, IfcSlab, IfcWindow) for all building elements.
+2. **Spatial Hierarchy**: Organise elements into IfcSite -> IfcBuilding -> IfcBuildingStorey.
+3. **Parametric BIM**: Define geometric properties using IFC attributes rather than simple mesh scaling.
+4. **Bonsai Operators**: Use `bpy.ops.bim.*` operators to manage the IFC database.
+
+Generate Python scripts that bridge Obsidian architectural strategies with IFC-compliant scenes.
+"""
+
+TEST_PYPI_CHECKLIST = """
+# Test PyPI Release Checklist
+
+Follow these steps for a successful staging release:
+1. **Version Update**: Increment `version` in `pyproject.toml`.
+2. **Build Verification**: Run `uv build` and check `dist/` for wheel and sdist.
+3. **Local Install Test**: `pip install dist/*.whl` in a clean venv.
+4. **Upload to Test PyPI**:
+   ```bash
+   uv run python -m twine upload --repository testpypi dist/*
+   ```
+5. **Verify Installation from Test PyPI**:
+   ```bash
+   pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple spec-craft
+   ```
+"""
+
 GENERATIVE_WORKFLOW_GUIDE = """
 # Spec-Craft Generative Asset Workflow
 

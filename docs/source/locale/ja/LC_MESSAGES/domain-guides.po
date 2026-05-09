@@ -1,13 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2026, Akihiro
-# This file is distributed under the same license as the Spec-Craft package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
-#
-#, fuzzy
+
 msgid ""
 msgstr ""
-"Project-Id-Version: Spec-Craft \n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version:  Spec-Craft\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2026-05-04 12:42+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -21,15 +16,15 @@ msgstr ""
 
 #: ../../source/domain-guides.md:1
 msgid "Domain Guides"
-msgstr ""
+msgstr "ドメイン別ガイド"
 
 #: ../../source/domain-guides.md:3
 msgid "Spec-Craft supports multiple creative production domains."
-msgstr ""
+msgstr "Spec-Craftは、複数のクリエイティブ制作ドメインをサポートしています。"
 
 #: ../../source/domain-guides.md:5
 msgid "Manga Production"
-msgstr ""
+msgstr "漫画制作"
 
 #: ../../source/domain-guides.md:6
 msgid ""
@@ -47,7 +42,7 @@ msgstr ""
 
 #: ../../source/domain-guides.md:10
 msgid "CAD Modeling (JSCAD)"
-msgstr ""
+msgstr "CAD モデリング (JSCAD)"
 
 #: ../../source/domain-guides.md:11
 msgid ""
@@ -63,7 +58,7 @@ msgstr ""
 
 #: ../../source/domain-guides.md:14
 msgid "3D Scene Construction (Blender)"
-msgstr ""
+msgstr "3D シーン構築 (Blender)"
 
 #: ../../source/domain-guides.md:15
 msgid ""

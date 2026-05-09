@@ -1,13 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2026, Akihiro
-# This file is distributed under the same license as the Spec-Craft package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
-#
-#, fuzzy
+
 msgid ""
 msgstr ""
-"Project-Id-Version: Spec-Craft \n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version:  Spec-Craft\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2026-05-04 12:42+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -21,45 +16,49 @@ msgstr ""
 
 #: ../../source/installation.md:1
 msgid "Installation and Setup"
-msgstr ""
+msgstr "インストールとセットアップ"
 
 #: ../../source/installation.md:3
 msgid "Prerequisites"
-msgstr ""
+msgstr "前提条件"
 
 #: ../../source/installation.md:4
 msgid "Before installing Spec-Craft, ensure you have the following:"
-msgstr ""
+msgstr "Spec-Craftをインストールする前に、以下が準備されていることを確認してください："
 
 #: ../../source/installation.md:5
+#, fuzzy
 msgid "**Python**: Version 3.10 or higher."
-msgstr ""
+msgstr "Python: バージョン 3.10 以上。"
 
 #: ../../source/installation.md:6
+#, fuzzy
 msgid "**Node.js**: Required for CAD (JSCAD) builds."
-msgstr ""
+msgstr "Node.js: CAD (JSCAD) ビルドに必要。"
 
 #: ../../source/installation.md:7
+#, fuzzy
 msgid "**uv**: Highly recommended for fast package management."
-msgstr ""
+msgstr "uv: 高速なパッケージ管理のために強く推奨されます。"
 
 #: ../../source/installation.md:9
 msgid "Installation"
-msgstr ""
+msgstr "インストール"
 
 #: ../../source/installation.md:10
+#, fuzzy
 msgid "The easiest way to install Spec-Craft is using `uv`:"
-msgstr ""
+msgstr "Spec-Craftをインストールする最も簡単な方法は \"uv\" を使うことです："
 
 #: ../../source/installation.md:19
 msgid "AI Agent Configuration"
-msgstr ""
+msgstr "AIエージェントの設定"
 
 #: ../../source/installation.md:20
 msgid ""
 "Spec-Craft provides an MCP (Model Context Protocol) server. Configuration"
 " depends on your AI agent:"
-msgstr ""
+msgstr "Spec-CraftはMCP（Model Context Protocol）サーバーを提供します。設定は使用するAIエージェントによって異なります："
 
 #: ../../source/installation.md:22
 msgid "Gemini CLI"
