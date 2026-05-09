@@ -1,5 +1,3 @@
-AGENT_REGISTRY_URL = "https://geminicli.com/extensions/"
-
 STRATEGY_TACTICS = """
 You are an expert in Spec-Driven Development (SDD). 
 You understand the relationship between Strategy and Tactics:
@@ -26,14 +24,29 @@ You are a professional video director. When storyboarding in SDD:
 """
 
 CAD_GUIDE = """
-You are a CAD engineer specializing in JSCAD. When storyboarding in SDD:
-1. **Parametric Modeling**: Design components with adjustable parameters.
-2. **Primitives**: Use geometric primitives (cube, sphere, cylinder) as building blocks.
+You are a CAD engineer specializing in JSCAD v2. When storyboarding in SDD:
+1. **Import Patterns**: Use the following structure for imports:
+   ```javascript
+   const { cylinder, cube } = require('@jscad/modeling').primitives;
+   const { subtract, union } = require('@jscad/modeling').booleans;
+   ```
+2. **Parametric Modeling**: Design components with adjustable parameters.
 3. **Component Logic**: Build complex models by combining and subtracting simple shapes.
-4. **JSCAD-Tool**: Follow the gemini-jscad pattern: write .js code, then convert to .stl.
+4. **JSCAD-Tool**: All scripts must export a `main` function: `module.exports = { main };`.
 """
 
-# Phase 3: Bootstrap Rules
+BONSAI_GUIDE = """
+You are an expert in BIM (Building Information Modeling) using Bonsai (BlenderBIM).
+When storyboarding architectural projects in SDD:
+1. **IFC Standards**: Use Industry Foundation Classes (IfcWall, IfcSlab, IfcWindow) for all building elements.
+2. **Project Setup**: Always initialize the project: `from bonsai.bim.ifc import IfcStore; if not IfcStore.get_file(): bpy.ops.bim.create_project()`.
+3. **Spatial Hierarchy**: Organise elements into IfcSite -> IfcBuilding -> IfcBuildingStorey.
+4. **Bonsai Operators**: Use `bpy.ops.bim.add_container(type='IfcWall')` to add architectural elements.
+
+Generate Python scripts that bridge Obsidian architectural strategies with IFC-compliant scenes.
+"""
+
+# Rest of the constants remain unchanged...
 BOOTSTRAP_RULES = """
 ### VI. Feature Branch Lifecycle & Merging
 Upon completion of a feature (verified by tests and SDD checklist), the user must be prompted to merge the work branch (e.g., `001-...`) into `main`. **Completed feature branches MUST NOT be deleted.** They must be preserved to maintain a historical record of the SDD process and to ensure the `spec-kit` numbering logic (which scans existing branches) functions correctly.
@@ -48,7 +61,8 @@ To prevent multi-line commit messages from being misinterpreted as shell command
 3. Temporary commit message files MUST reside in directories ignored by Git (e.g., `.gemini/`) to avoid accidental leakage or tracking.
 """
 
-# Phase 3: Agent Profiles
+AGENT_REGISTRY_URL = "https://geminicli.com/extensions/"
+
 AGENT_EXTENSION_GUIDE_TEMPLATE = f"""
 When installing spec-kit extensions for your AI agent, search the official registry for the latest tools:
 {{AGENT_REGISTRY_URL}}
@@ -90,15 +104,16 @@ You are a Blender automation expert. When storyboarding 3D scenes (Bonkei) in SD
 Always output a complete Python script that can be run with `blender --python`.
 """
 
-BONSAI_GUIDE = """
-You are an expert in BIM (Building Information Modeling) using Bonsai (BlenderBIM).
-When storyboarding architectural projects in SDD:
-1. **IFC Standards**: Use Industry Foundation Classes (IfcWall, IfcSlab, IfcWindow) for all building elements.
-2. **Spatial Hierarchy**: Organise elements into IfcSite -> IfcBuilding -> IfcBuildingStorey.
-3. **Parametric BIM**: Define geometric properties using IFC attributes rather than simple mesh scaling.
-4. **Bonsai Operators**: Use `bpy.ops.bim.*` operators to manage the IFC database.
+GENERATIVE_WORKFLOW_GUIDE = """
+# Spec-Craft Generative Asset Workflow
 
-Generate Python scripts that bridge Obsidian architectural strategies with IFC-compliant scenes.
+To translate a strategic roadmap in Obsidian into creative assets (Images, Music, Video), follow these steps:
+
+1. **Strategic Spec**: Analyze the target scene or chapter in Obsidian (use `read_storyboard`).
+2. **Tactics Verification**: Check if the required generative extensions are installed (use `check_generative_capabilities`).
+3. **Drafting**: Use the domain-specific guide (Manga, Video, etc.) to draft a tactical specification for the asset.
+4. **Implementation**: Trigger the generation. For built-in drivers (SVG, CAD), use spec-craft tools. For external extensions (like Nano Banana), use their specific slash commands.
+5. **Organization**: Ensure all final assets are placed in the hierarchical `build/` directory for consistency.
 """
 
 TEST_PYPI_CHECKLIST = """
@@ -116,16 +131,4 @@ Follow these steps for a successful staging release:
    ```bash
    pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple spec-craft
    ```
-"""
-
-GENERATIVE_WORKFLOW_GUIDE = """
-# Spec-Craft Generative Asset Workflow
-
-To translate a strategic roadmap in Obsidian into creative assets (Images, Music, Video), follow these steps:
-
-1. **Strategic Spec**: Analyze the target scene or chapter in Obsidian (use `read_storyboard`).
-2. **Tactics Verification**: Check if the required generative extensions are installed (use `check_generative_capabilities`).
-3. **Drafting**: Use the domain-specific guide (Manga, Video, etc.) to draft a tactical specification for the asset.
-4. **Implementation**: Trigger the generation. For built-in drivers (SVG, CAD), use spec-craft tools. For external extensions (like Nano Banana), use their specific slash commands.
-5. **Organization**: Ensure all final assets are placed in the hierarchical `build/` directory for consistency.
 """

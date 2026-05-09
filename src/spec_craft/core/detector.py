@@ -73,18 +73,32 @@ class WorkspaceDetector:
 
         # 3. node/npx
         has_npx = shutil.which("npx") is not None
+        jscad_installed = (self.root_path / "node_modules" / "@jscad" / "cli").is_dir()
+        
         status.append({
             "tool_name": "node/npx",
             "is_installed": has_npx,
             "install_command": "Visit https://nodejs.org/ to install Node.js and npx" if not has_npx else None
         })
+        
+        status.append({
+            "tool_name": "@jscad/cli",
+            "is_installed": jscad_installed,
+            "install_command": "npm install @jscad/cli @jscad/modeling" if not jscad_installed else None
+        })
 
         # 4. uv
-        has_uv = shutil.which("uv") is not None
-        status.append({
-            "tool_name": "uv",
-            "is_installed": has_uv,
+...
             "install_command": "curl -LsSf https://astral.sh/uv/install.sh | sh" if not has_uv else None
+        })
+
+        # 5. Blender Bonsai
+        # Detecting Blender add-ons usually requires running blender, 
+        # but we can check for common installation paths or assume manual check.
+        status.append({
+            "tool_name": "Bonsai (BlenderBIM)",
+            "is_installed": False,  # Placeholder for manual/scripted check
+            "install_command": "Visit https://bonsai-bim.org/ to install the Blender add-on"
         })
 
         return status

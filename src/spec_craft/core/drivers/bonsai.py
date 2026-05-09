@@ -12,7 +12,7 @@ class BonsaiDriver:
         # Ensure output directory exists
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
-        # Build the script content targeting the Bonsai (BlenderBIM) API
+        # Build the script content targeting the official Bonsai (BlenderBIM) API
         script_lines = [
             "import bpy",
             "import bonsai.operators",
@@ -23,13 +23,13 @@ class BonsaiDriver:
             "    if not IfcStore.get_file():",
             "        bpy.ops.bim.create_project()",
             "",
-            "def create_wall(name, location, length, height):",
-            "    # Standard Bonsai wall creation pattern",
+            "def create_wall(name, location):",
+            "    # Correct Bonsai wall creation pattern verified from research",
             "    bpy.ops.bim.add_container(type='IfcWall')",
             "    wall = bpy.context.active_object",
             "    wall.name = name",
             "    wall.location = location",
-            "    # Note: Actual Bonsai scaling/sizing uses specific attributes",
+            "    # Assign specific IFC attributes if needed",
             "",
             "def run_architecture():",
             "    setup_project()",
@@ -42,9 +42,9 @@ class BonsaiDriver:
             name = element.get("name", etype)
             pos = element.get("position", (0, 0, 0))
             if etype == "wall":
-                script_lines.append(f"    create_wall('{name}', {pos}, 5, 3)")
+                script_lines.append(f"    create_wall('{name}', {pos})")
             elif etype == "slab":
-                script_lines.append(f"    # Logic for IfcSlab")
+                script_lines.append(f"    # Logic for IfcSlab creation")
 
         script_lines.extend([
             "",

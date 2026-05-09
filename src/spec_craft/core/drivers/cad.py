@@ -10,11 +10,11 @@ class CADDriver:
         self.project_root = project_root
 
     def build(self, jscad_code: str, output_base_path: Path, formats: List[str]) -> Dict[str, Path]:
-        """Saves JSCAD code and generates requested formats (stl, svg)."""
+        """Saves JSCAD code and generates requested formats (stl, svg) sequentially."""
         # Ensure directory exists
         output_base_path.parent.mkdir(parents=True, exist_ok=True)
         
-        # Save .js source (required for JSCAD CLI)
+        # Save .js source
         js_path = output_base_path.with_suffix(".js")
         js_path.write_text(jscad_code)
         
@@ -23,12 +23,8 @@ class CADDriver:
         for fmt in formats:
             out_file = output_base_path.with_suffix(f".{fmt}")
             
-            # Construct npx @jscad/cli command
-            # Using --output to specify format and destination
+            # Using serial execution to ensure each format is correctly generated
             command = ["npx", "@jscad/cli", str(js_path), "--output", str(out_file)]
-            
-            # For SVG, we might want to specify a projection if needed, 
-            # but standard export works for 3D -> 2D projection in many cases.
             
             try:
                 result = subprocess.run(
@@ -38,7 +34,10 @@ class CADDriver:
                     cwd=str(self.project_root),
                     check=True
                 )
-                results[fmt] = out_file
+                if out_file.is_file():
+                    results[fmt] = out_file
+                else:
+                    raise FileNotFoundError(f"Expected output file not found: {out_file}")
             except FileNotFoundError:
                 raise RuntimeError("Node.js or npx not found. Please ensure Node.js is installed and npx is in your PATH.")
             except subprocess.CalledProcessError as e:
