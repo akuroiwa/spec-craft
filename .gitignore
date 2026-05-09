@@ -219,3 +219,5 @@ _research_references/
 node_modules/
 # extension/
 # docs/source/locale/ (tracked but excluded from some checks)
+_research_references/OpenJSCAD.org/
+_research_references/IfcOpenShell/
