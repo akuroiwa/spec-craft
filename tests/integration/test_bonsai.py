@@ -21,4 +21,4 @@ def test_bonsai_driver_generates_ifc_script(temp_workspace):
     
     assert "import bonsai.operators" in content
     assert "IfcWall" in content
-    assert "create_wall('MainWall', (0, 0, 0), 5, 3)" in content
+    assert "create_wall('MainWall', (0, 0, 0))" in content

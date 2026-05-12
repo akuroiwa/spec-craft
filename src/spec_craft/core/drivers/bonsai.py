@@ -25,11 +25,12 @@ class BonsaiDriver:
             "",
             "def create_wall(name, location):",
             "    # Correct Bonsai wall creation pattern verified from research",
+            "    # Use add_container with standard IFC type",
             "    bpy.ops.bim.add_container(type='IfcWall')",
             "    wall = bpy.context.active_object",
             "    wall.name = name",
             "    wall.location = location",
-            "    # Assign specific IFC attributes if needed",
+            "    # In Bonsai, adding attributes often involves IfcStore and tool modules",
             "",
             "def run_architecture():",
             "    setup_project()",
@@ -37,14 +38,19 @@ class BonsaiDriver:
         ]
         
         # Add elements from spec
-        for element in scene_spec.get("elements", []):
+        elements = scene_spec.get("elements", [])
+        for element in elements:
             etype = element.get("type")
             name = element.get("name", etype)
             pos = element.get("position", (0, 0, 0))
             if etype == "wall":
                 script_lines.append(f"    create_wall('{name}', {pos})")
             elif etype == "slab":
-                script_lines.append(f"    # Logic for IfcSlab creation")
+                script_lines.append(f"    # Logic for IfcSlab creation would go here")
+                script_lines.append(f"    bpy.ops.bim.add_container(type='IfcSlab')")
+                script_lines.append(f"    slab = bpy.context.active_object")
+                script_lines.append(f"    slab.name = '{name}'")
+                script_lines.append(f"    slab.location = {pos}")
 
         script_lines.extend([
             "",

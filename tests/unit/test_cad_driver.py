@@ -11,12 +11,13 @@ def test_cad_driver_build_multi_format(temp_workspace):
     output_base = temp_workspace / "build" / "cad" / "test"
     formats = ["stl", "svg"]
     
-    # Mock subprocess.run
-    with patch("subprocess.run") as mock_run:
+    # Mock subprocess.run and file existence
+    with patch("subprocess.run") as mock_run, \
+         patch("pathlib.Path.is_file") as mock_exists:
         mock_run.return_value = MagicMock(returncode=0, stdout="Success", stderr="")
-        
+        mock_exists.return_value = True
+
         results = driver.build(jscad_code, output_base, formats)
-        
         assert len(results) == 2
         assert "stl" in results
         assert "svg" in results

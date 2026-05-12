@@ -143,6 +143,19 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
         return str(o_path.relative_to(detector.root_path))
 
     @mcp.tool()
+    def trigger_bonsai_build(scene_spec: dict, output_name: str) -> str:
+        """Generates an IFC-compliant Bonsai (BlenderBIM) script from architectural strategy.
+        
+        Args:
+            scene_spec: A dictionary describing the building elements (walls, slabs, positions).
+            output_name: Filename for the script (e.g., 'house.py').
+        """
+        o_path = build_manager.get_output_path("bonsai", "universal", output_name)
+        bonsai_driver.generate_ifc_script(scene_spec, o_path)
+        
+        return str(o_path.relative_to(detector.root_path))
+
+    @mcp.tool()
     def trigger_full_build() -> dict:
         """Coordinates a full build of all pending assets (SVG, CAD, 3D, Architecture)."""
         return {
@@ -208,6 +221,7 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
 
     return mcp
 
+server = create_mcp_server()
+
 if __name__ == "__main__":
-    mcp = create_mcp_server()
-    mcp.run()
+    server.run()
