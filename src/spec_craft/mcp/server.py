@@ -1,15 +1,16 @@
 from pathlib import Path
 from typing import List, Optional
 from fastmcp import FastMCP
-from ..core.detector import WorkspaceDetector
-from ..core.manager import ConstitutionManager
-from ..core.parser import StoryboardParser
-from ..core.agent import AgentManager, GenerativeDomain
-from ..core.executor import ScriptExecutor
-from ..core.build import BuildManager
-from ..core.drivers.svg import SVGDriver
-from ..core.drivers.cad import CADDriver
-from ..core.drivers.blender import BlenderDriver
+from spec_craft.core.detector import WorkspaceDetector
+from spec_craft.core.manager import ConstitutionManager
+from spec_craft.core.parser import StoryboardParser
+from spec_craft.core.agent import AgentManager, GenerativeDomain
+from spec_craft.core.executor import ScriptExecutor
+from spec_craft.core.build import BuildManager
+from spec_craft.core.drivers.svg import SVGDriver
+from spec_craft.core.drivers.cad import CADDriver
+from spec_craft.core.drivers.blender import BlenderDriver
+from spec_craft.mcp import prompts
 
 def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
     """Creates and configures the FastMCP server instance.
@@ -29,8 +30,8 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
     svg_driver = SVGDriver()
     cad_driver = CADDriver(detector.root_path)
     blender_driver = BlenderDriver(detector.root_path)
-    
-    from . import prompts
+    from spec_craft.core.drivers.bonsai import BonsaiDriver
+    bonsai_driver = BonsaiDriver(detector.root_path)
 
     @mcp.tool()
     def analyze_workspace() -> dict:
@@ -207,4 +208,6 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
 
     return mcp
 
-server = create_mcp_server()
+if __name__ == "__main__":
+    mcp = create_mcp_server()
+    mcp.run()

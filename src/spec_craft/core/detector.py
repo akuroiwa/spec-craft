@@ -88,7 +88,10 @@ class WorkspaceDetector:
         })
 
         # 4. uv
-...
+        has_uv = shutil.which("uv") is not None
+        status.append({
+            "tool_name": "uv",
+            "is_installed": has_uv,
             "install_command": "curl -LsSf https://astral.sh/uv/install.sh | sh" if not has_uv else None
         })
 
