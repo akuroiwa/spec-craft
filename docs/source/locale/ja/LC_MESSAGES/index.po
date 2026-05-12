@@ -1,27 +1,40 @@
+
 msgid ""
 msgstr ""
-"Project-Id-Version: Spec-Craft\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-25 00:00+0000\n"
-"PO-Revision-Date: 2026-04-25 00:00+0000\n"
-"Last-Translator: Akihiro\n"
-"Language-Team: Japanese\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version:  Spec-Craft\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-05-12 15:42+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
+"Language-Team: ja <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
 
-msgid "Spec-Craft Manual"
-msgstr "Spec-Craft マニュアル"
-
-msgid "Welcome to the Spec-Craft documentation."
-msgstr "Spec-Craft ドキュメントへようこそ。"
-
+#: ../../source/index.md:5
 msgid "Contents:"
-msgstr "目次:"
+msgstr "コンテンツ："
 
+#: ../../source/index.md:1
+msgid "Spec-Craft Manual"
+msgstr ""
+
+#: ../../source/index.md:3
+#, fuzzy
+msgid "Welcome to the Spec-Craft documentation."
+msgstr "Spec-Craft ドキュメントへようこそ！"
+
+#: ../../source/index.md:14
 msgid "Introduction"
-msgstr "はじめに"
+msgstr ""
 
+#: ../../source/index.md:15
 msgid "Spec-Craft is an Obsidian-based Spec-Driven Development (SDD) toolkit."
-msgstr "Spec-Craftは、Obsidianベースの仕様駆動開発（SDD）ツールキットです。"
+msgstr ""
+
+#~ msgid "Professional SDD toolkit for creative production."
+#~ msgstr "クリエイティブ制作のためのプロフェッショナルな SDD ツールキット。"
+

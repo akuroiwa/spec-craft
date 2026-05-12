@@ -50,19 +50,19 @@ msgstr "インストール"
 msgid ""
 "The easiest way to install Spec-Craft is using `uv` or `pipx` to avoid "
 "environment conflicts:"
-msgstr "Spec-Craftをインストールする最も簡単な方法は \"uv\" を使うことです："
+msgstr "Spec-Craftをインストールする最も簡単な方法は uv を使うことです："
 
 #: ../../source/installation.md:12
 msgid "Using uv (Recommended)"
-msgstr ""
+msgstr "uv を使う場合 (推奨)"
 
 #: ../../source/installation.md:17
 msgid "Using pipx"
-msgstr ""
+msgstr "pipx を使う場合"
 
 #: ../../source/installation.md:22
 msgid "From Source (for development)"
-msgstr ""
+msgstr "ソースからインストールする場合 (開発用)"
 
 #: ../../source/installation.md:29
 msgid "AI Agent Configuration"

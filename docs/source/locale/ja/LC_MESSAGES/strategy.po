@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Spec-Craft\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-05-04 12:42+0900\n"
+"POT-Creation-Date: 2026-05-12 15:42+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: ../../source/strategy.md:1
 msgid "Strategic Hub (Obsidian)"
-msgstr "戦略ハブ (Obsidian)"
+msgstr ""
 
 #: ../../source/strategy.md:3
 msgid ""
@@ -24,28 +24,25 @@ msgid ""
 "Obsidian to maintain a high-level creative roadmap that guides all "
 "implementation efforts."
 msgstr ""
-"戦略ハブは、Spec-"
-"Craftワークフローの心臓部です。Obsidianを活用して、すべての実装作業を導くハイレベルなクリエイティブロードマップを維持します。"
 
 #: ../../source/strategy.md:5
+#, fuzzy
 msgid "Strategy vs Tactics Analogy"
-msgstr "戦略 vs 戦術の比喩"
+msgstr "戦略 vs 戦術"
 
 #: ../../source/strategy.md:6
 msgid ""
 "Understanding the difference between strategy and tactics is key to the "
 "Spec-Craft philosophy:"
-msgstr "戦略と戦術の違いを理解することは、Spec-Craftの哲学において重要です："
+msgstr ""
 
 #: ../../source/strategy.md:8
-#, fuzzy
 msgid "**Strategy (Obsidian)**:"
-msgstr "戦略 (Obsidian)："
+msgstr ""
 
 #: ../../source/strategy.md:9
-#, fuzzy
 msgid "**Focus**: \"What\" and \"Why\"."
-msgstr "焦点： 「何を作るか」「なぜ作るか」"
+msgstr ""
 
 #: ../../source/strategy.md:10
 msgid ""
@@ -58,14 +55,12 @@ msgid "**Permanence**: Acts as the project's \"soul\" and persistent record."
 msgstr ""
 
 #: ../../source/strategy.md:12
-#, fuzzy
 msgid "**Tactics (spec-kit)**:"
-msgstr "戦術 (spec-kit)："
+msgstr ""
 
 #: ../../source/strategy.md:13
-#, fuzzy
 msgid "**Focus**: \"How\"."
-msgstr "焦点： 「どう実装するか」"
+msgstr ""
 
 #: ../../source/strategy.md:14
 msgid "**Process**: Short-term SDD cycles (Specify → Plan → Implement)."
@@ -86,4 +81,22 @@ msgid ""
 "Spec-Craft acts as the bridge, allowing AI agents to read the strategy in"
 " Obsidian and translate it into tactical tasks in spec-kit."
 msgstr ""
+
+#~ msgid ""
+#~ "Spec-Craft is built on the "
+#~ "philosophy of dividing creative production "
+#~ "into two layers:"
+#~ msgstr "Spec-Craftは、クリエイティブ制作を以下の2つのレイヤーに分けるという哲学に基づいています："
+
+#~ msgid "Strategy (The Soul)"
+#~ msgstr "戦略 (魂)"
+
+#~ msgid "Tactics (The Body)"
+#~ msgstr "戦術 (肉体)"
+
+#~ msgid "Managed in Obsidian. It defines the 'What' and 'Why'."
+#~ msgstr "Obsidianで管理されます。「何を作るか」「なぜ作るか」を定義します。"
+
+#~ msgid "Managed by spec-kit. It defines the 'How'."
+#~ msgstr "spec-kitで管理されます。「どのように作るか」を定義します。"
 
