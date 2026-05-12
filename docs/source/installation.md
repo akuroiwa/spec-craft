@@ -7,13 +7,23 @@ Before installing Spec-Craft, ensure you have the following:
 - **uv**: Highly recommended for fast package management.
 
 ## Installation
-The easiest way to install Spec-Craft is using `uv`:
+The easiest way to install Spec-Craft is using `uv` or `pipx` to avoid environment conflicts:
 
+### Using uv (Recommended)
+```bash
+uv tool install spec-craft
+```
+
+### Using pipx
+```bash
+pipx install spec-craft
+```
+
+### From Source (for development)
 ```bash
 git clone https://github.com/akuroiwa/spec-craft.git
 cd spec-craft
 uv sync
-pip install -e .
 ```
 
 ## AI Agent Configuration

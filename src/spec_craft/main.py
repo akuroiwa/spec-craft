@@ -12,6 +12,9 @@ def main():
     # serve command
     subparsers.add_parser("serve", help="Start the MCP server")
 
+    # check-env command
+    subparsers.add_parser("check-env", help="Check for missing prerequisites")
+
     # browse command
     browse_parser = subparsers.add_parser("browse", help="Start the local 3D preview server")
     browse_parser.add_argument("--port", type=int, default=8080, help="Port to run the server on")
@@ -22,6 +25,12 @@ def main():
     if args.command == "serve":
         print("Starting spec-craft MCP server...")
         server.run()
+    elif args.command == "check-env":
+        from spec_craft.core.detector import WorkspaceDetector
+        import json
+        detector = WorkspaceDetector()
+        results = detector.check_environment()
+        print(json.dumps(results, indent=2))
     elif args.command == "browse":
         from spec_craft.core.detector import WorkspaceDetector
         from spec_craft.core.ui.server import PreviewServer

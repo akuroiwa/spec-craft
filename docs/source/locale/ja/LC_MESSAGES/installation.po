@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Spec-Craft\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-05-04 12:42+0900\n"
+"POT-Creation-Date: 2026-05-12 15:42+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -47,32 +47,46 @@ msgstr "インストール"
 
 #: ../../source/installation.md:10
 #, fuzzy
-msgid "The easiest way to install Spec-Craft is using `uv`:"
+msgid ""
+"The easiest way to install Spec-Craft is using `uv` or `pipx` to avoid "
+"environment conflicts:"
 msgstr "Spec-Craftをインストールする最も簡単な方法は \"uv\" を使うことです："
 
-#: ../../source/installation.md:19
+#: ../../source/installation.md:12
+msgid "Using uv (Recommended)"
+msgstr ""
+
+#: ../../source/installation.md:17
+msgid "Using pipx"
+msgstr ""
+
+#: ../../source/installation.md:22
+msgid "From Source (for development)"
+msgstr ""
+
+#: ../../source/installation.md:29
 msgid "AI Agent Configuration"
 msgstr "AIエージェントの設定"
 
-#: ../../source/installation.md:20
+#: ../../source/installation.md:30
 msgid ""
 "Spec-Craft provides an MCP (Model Context Protocol) server. Configuration"
 " depends on your AI agent:"
 msgstr "Spec-CraftはMCP（Model Context Protocol）サーバーを提供します。設定は使用するAIエージェントによって異なります："
 
-#: ../../source/installation.md:22
+#: ../../source/installation.md:32
 msgid "Gemini CLI"
 msgstr ""
 
-#: ../../source/installation.md:23
+#: ../../source/installation.md:33
 msgid "Add the following to your `.gemini/settings.json`:"
 msgstr ""
 
-#: ../../source/installation.md:36
+#: ../../source/installation.md:46
 msgid "Claude Desktop"
 msgstr ""
 
-#: ../../source/installation.md:37
+#: ../../source/installation.md:47
 msgid "Add to `claude_desktop_config.json`:"
 msgstr ""
 
