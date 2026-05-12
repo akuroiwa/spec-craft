@@ -20,20 +20,19 @@ msgstr "コンテンツ："
 
 #: ../../source/index.md:1
 msgid "Spec-Craft Manual"
-msgstr ""
+msgstr "Spec-Craft Manual"
 
 #: ../../source/index.md:3
-#, fuzzy
 msgid "Welcome to the Spec-Craft documentation."
 msgstr "Spec-Craft ドキュメントへようこそ！"
 
 #: ../../source/index.md:14
 msgid "Introduction"
-msgstr ""
+msgstr "Introduction"
 
 #: ../../source/index.md:15
 msgid "Spec-Craft is an Obsidian-based Spec-Driven Development (SDD) toolkit."
-msgstr ""
+msgstr "Spec-Craft is an Obsidian-based Spec-Driven Development (SDD) toolkit."
 
 #~ msgid "Professional SDD toolkit for creative production."
 #~ msgstr "クリエイティブ制作のためのプロフェッショナルな SDD ツールキット。"
