@@ -2,10 +2,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version:  Spec-Craft\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To:\n"
 "POT-Creation-Date: 2026-05-12 15:42+0900\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2026-05-14 10:53+0900\n"
+"Last-Translator: Akihiro Kuroiwa <akuroiwa@env-reform.com>\n"
 "Language: ja\n"
 "Language-Team: ja <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -23,10 +23,7 @@ msgid ""
 "The Strategic Hub is the heart of the Spec-Craft workflow. It leverages "
 "Obsidian to maintain a high-level creative roadmap that guides all "
 "implementation efforts."
-msgstr ""
-"The Strategic Hub is the heart of the Spec-Craft workflow. It leverages "
-"Obsidian to maintain a high-level creative roadmap that guides all "
-"implementation efforts."
+msgstr "`Strategic Hub` は、Spec-Craft ワークフローの中核です。Obsidian を活用して、すべての実装作業の指針となる高度なクリエイティブ・ロードマップを管理します。"
 
 #: ../../source/strategy.md:5
 msgid "Strategy vs Tactics Analogy"
@@ -36,77 +33,51 @@ msgstr "戦略 vs 戦術"
 msgid ""
 "Understanding the difference between strategy and tactics is key to the "
 "Spec-Craft philosophy:"
-msgstr ""
-"Understanding the difference between strategy and tactics is key to the "
-"Spec-Craft philosophy:"
+msgstr "Spec-Craft の哲学を理解する上で、戦略と戦術の違いを知ることが重要です："
 
 #: ../../source/strategy.md:8
 msgid "**Strategy (Obsidian)**:"
-msgstr "**Strategy (Obsidian)**:"
+msgstr "**戦略 (Obsidian)**:"
 
 #: ../../source/strategy.md:9
 msgid "**Focus**: \"What\" and \"Why\"."
-msgstr "**Focus**: \"What\" and \"Why\"."
+msgstr "**フォーカス**: 「何（What）」を「なぜ（Why）」行うか。"
 
 #: ../../source/strategy.md:10
 msgid ""
 "**Content**: Storyboards, character settings, geometric principles, and "
 "long-term milestones."
-msgstr ""
-"**Content**: Storyboards, character settings, geometric principles, and "
-"long-term milestones."
+msgstr "**内容**: ストーリーボード、キャラクター設定、幾何学的原理、および長期的なマイルストーン。"
 
 #: ../../source/strategy.md:11
 msgid "**Permanence**: Acts as the project's \"soul\" and persistent record."
-msgstr "**Permanence**: Acts as the project's \"soul\" and persistent record."
+msgstr "**永続性**: プロジェクトの「魂」であり、持続的な記録として機能します。"
 
 #: ../../source/strategy.md:12
 msgid "**Tactics (spec-kit)**:"
-msgstr "**Tactics (spec-kit)**:"
+msgstr "**戦術 (spec-kit)**:"
 
 #: ../../source/strategy.md:13
 msgid "**Focus**: \"How\"."
-msgstr "**Focus**: \"How\"."
+msgstr "**フォーカス**: 「どのように（How）」行うか。"
 
 #: ../../source/strategy.md:14
 msgid "**Process**: Short-term SDD cycles (Specify → Plan → Implement)."
-msgstr "**Process**: Short-term SDD cycles (Specify → Plan → Implement)."
+msgstr "**プロセス**: 短期の SDD（Specify → Plan → Implement）サイクル。"
 
 #: ../../source/strategy.md:15
 msgid ""
 "**Action**: Creating specific code files, generating SVG scenes, or "
 "building CAD models."
-msgstr ""
-"**Action**: Creating specific code files, generating SVG scenes, or "
-"building CAD models."
+msgstr "**アクション**: 具体的なコードファイルの作成、SVG シーンの生成、CAD モデルの構築など。"
 
 #: ../../source/strategy.md:17
 msgid "The Bridge"
-msgstr "The Bridge"
+msgstr "架け橋としての役割"
 
 #: ../../source/strategy.md:18
 msgid ""
 "Spec-Craft acts as the bridge, allowing AI agents to read the strategy in"
 " Obsidian and translate it into tactical tasks in spec-kit."
-msgstr ""
-"Spec-Craft acts as the bridge, allowing AI agents to read the strategy in"
-" Obsidian and translate it into tactical tasks in spec-kit."
-
-#~ msgid ""
-#~ "Spec-Craft is built on the "
-#~ "philosophy of dividing creative production "
-#~ "into two layers:"
-#~ msgstr "Spec-Craftは、クリエイティブ制作を以下の2つのレイヤーに分けるという哲学に基づいています："
-
-#~ msgid "Strategy (The Soul)"
-#~ msgstr "戦略 (魂)"
-
-#~ msgid "Tactics (The Body)"
-#~ msgstr "戦術 (肉体)"
-
-#~ msgid "Managed in Obsidian. It defines the 'What' and 'Why'."
-#~ msgstr "Obsidianで管理されます。「何を作るか」「なぜ作るか」を定義します。"
-
-#~ msgid "Managed by spec-kit. It defines the 'How'."
-#~ msgstr "spec-kitで管理されます。「どのように作るか」を定義します。"
+msgstr "Spec-Craft は架け橋（Bridge）として機能し、AI エージェントが Obsidian 内の戦略を読み取り、それを `spec-kit` における戦術的なタスクへと変換することを可能にします。"
 

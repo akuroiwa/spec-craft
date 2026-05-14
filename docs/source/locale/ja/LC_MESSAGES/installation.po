@@ -2,10 +2,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version:  Spec-Craft\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Report-Msgid-Bugs-To:\n"
 "POT-Creation-Date: 2026-05-12 15:42+0900\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2026-05-14 10:57+0900\n"
+"Last-Translator: Akihiro Kuroiwa <akuroiwa@env-reform.com>\n"
 "Language: ja\n"
 "Language-Team: ja <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -76,7 +76,7 @@ msgstr "Gemini CLI"
 
 #: ../../source/installation.md:33
 msgid "Add the following to your `.gemini/settings.json`:"
-msgstr "Add the following to your `.gemini/settings.json`:"
+msgstr "`.gemini/settings.json` に設定を追加します。"
 
 #: ../../source/installation.md:46
 msgid "Claude Desktop"
@@ -84,5 +84,5 @@ msgstr "Claude Desktop"
 
 #: ../../source/installation.md:47
 msgid "Add to `claude_desktop_config.json`:"
-msgstr "Add to `claude_desktop_config.json`:"
+msgstr "`claude_desktop_config.json` に設定を追加します。"
 
