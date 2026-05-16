@@ -15,4 +15,4 @@ Understanding the difference between strategy and tactics is key to the Spec-Cra
   - **Action**: Creating specific code files, generating SVG scenes, or building CAD models.
 
 ## The Bridge
-Spec-Craft acts as the bridge, allowing AI agents to read the strategy in Obsidian and translate it into tactical tasks in spec-kit.
+Spec-Craft acts as the bridge, allowing AI agents to read the strategy in [Obsidian](https://obsidian.md/) and translate it into tactical tasks in [spec-kit](https://github.com/github/spec-kit).
