@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version:  Spec-Craft\n"
-"Report-Msgid-Bugs-To:\n"
-"POT-Creation-Date: 2026-05-12 15:42+0900\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-17 23:28+0900\n"
 "PO-Revision-Date: 2026-05-14 11:32+0900\n"
 "Last-Translator: Akihiro Kuroiwa <akuroiwa@env-reform.com>\n"
 "Language: ja\n"
@@ -30,7 +30,9 @@ msgstr "漫画制作"
 msgid ""
 "Define your storyboard in Obsidian. Use the `trigger_svg_build` tool to "
 "inject dialogue from your strategy into SVG templates."
-msgstr "Obsidian でストーリーボードを定義します。`trigger_svg_build` ツールを使用して、戦略からセリフを抽出し、SVG テンプレートに注入します。"
+msgstr ""
+"Obsidian でストーリーボードを定義します。`trigger_svg_build` ツールを使用して、戦略からセリフを抽出し、SVG "
+"テンプレートに注入します。"
 
 #: ../../source/domain-guides.md:7
 msgid "**Strategy**: YAML metadata in Obsidian."
@@ -48,7 +50,9 @@ msgstr "CAD モデリング (JSCAD)"
 msgid ""
 "Specify geometric requirements in Obsidian. Use `trigger_cad_build` to "
 "generate JSCAD code and export STL files."
-msgstr "Obsidian で幾何学的な要件を指定します。`trigger_cad_build` を使用して JSCAD コードを生成し、STL ファイルをエクスポートします。"
+msgstr ""
+"Obsidian で幾何学的な要件を指定します。`trigger_cad_build` を使用して JSCAD コードを生成し、STL "
+"ファイルをエクスポートします。"
 
 #: ../../source/domain-guides.md:12
 msgid ""
@@ -64,9 +68,34 @@ msgstr "3D シーン構築 (Blender)"
 msgid ""
 "Describe tray landscapes (Bonkei) in Obsidian. Use "
 "`generate_blender_script` to create Python scripts for Blender."
-msgstr "Obsidian で「盆景 (Bonkei)」のようなランドスケープを記述します。`generate_blender_script` を使用して、Blender 用の Python スクリプトを自動生成します。"
+msgstr ""
+"Obsidian で「盆景 (Bonkei)」のようなランドスケープを記述します。`generate_blender_script` "
+"を使用して、Blender 用の Python スクリプトを自動生成します。"
 
 #: ../../source/domain-guides.md:16
 msgid "**Process**: Obsidian Spec → Blender Python Script → Automated 3D Build."
 msgstr "**Process**: Obsidian Spec → Blender Python Script → Automated 3D Build."
 
+#: ../../source/domain-guides.md:18
+msgid "Architectural Design (Bonsai)"
+msgstr "建築設計 (Bonsai)"
+
+#: ../../source/domain-guides.md:19
+msgid ""
+"Manage architectural strategies and tactical implementations using the "
+"IFC (Industry Foundation Classes) standard. Spec-Craft generates Python "
+"scripts that utilize the Bonsai (BlenderBIM) API to create BIM-compliant "
+"models."
+msgstr ""
+"IFC (Industry Foundation Classes) 標準を使用して、建築の戦略と戦術的な実装を管理します。Spec-Craft は、Bonsai "
+"(BlenderBIM) API を活用して BIM 準拠のモデルを作成するための Python スクリプトを生成します。"
+
+#: ../../source/domain-guides.md:20
+msgid "**Standards**: OpenBIM / IFC compliance."
+msgstr "**規格**: OpenBIM / IFC 準拠。"
+
+#: ../../source/domain-guides.md:21
+msgid ""
+"**Workflow**: Obsidian Strategy → Bonsai Python Script → IFC Asset "
+"Generation."
+msgstr "**ワークフロー**: Obsidian の戦略 → Bonsai Python スクリプト → IFC アセット生成。"

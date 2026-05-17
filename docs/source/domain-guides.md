@@ -14,3 +14,8 @@ Specify geometric requirements in Obsidian. Use `trigger_cad_build` to generate 
 ## 3D Scene Construction (Blender)
 Describe tray landscapes (Bonkei) in Obsidian. Use `generate_blender_script` to create Python scripts for Blender.
 - **Process**: Obsidian Spec → Blender Python Script → Automated 3D Build.
+
+## Architectural Design (Bonsai)
+Manage architectural strategies and tactical implementations using the IFC (Industry Foundation Classes) standard. Spec-Craft generates Python scripts that utilize the Bonsai (BlenderBIM) API to create BIM-compliant models.
+- **Standards**: OpenBIM / IFC compliance.
+- **Workflow**: Obsidian Strategy → Bonsai Python Script → IFC Asset Generation.

@@ -1,0 +1,82 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version:  Spec-Craft\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-17 23:30+0900\n"
+"PO-Revision-Date: 2026-05-17 23:36+0900\n"
+"Last-Translator: Akihiro Kuroiwa <akuroiwa@env-reform.com>\n"
+"Language: ja\n"
+"Language-Team: ja <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../source/maintenance.md:1
+msgid "Documentation Maintenance"
+msgstr "ドキュメントのメンテナンス"
+
+#: ../../source/maintenance.md:3
+msgid ""
+"Spec-Craft documentation follows a `gettext` workflow to manage multiple "
+"languages."
+msgstr "Spec-Craft のドキュメントは、多言語管理のために `gettext` ワークフローを採用しています。"
+
+#: ../../source/maintenance.md:5
+msgid "Updating the English Source"
+msgstr "英語ソースの更新"
+
+#: ../../source/maintenance.md:6
+msgid "Modify the `.md` files in `docs/source/`."
+msgstr "`docs/source/` 内の `.md` ファイルを修正します。"
+
+#: ../../source/maintenance.md:7
+msgid "Run `cd docs && make html` to verify locally."
+msgstr "`cd docs && make html` を実行して、ローカルで確認します。"
+
+#: ../../source/maintenance.md:9
+msgid "Updating Translations (Japanese)"
+msgstr "翻訳（日本語）の更新"
+
+#: ../../source/maintenance.md:10
+msgid "After changing the English source, you must update the message catalogs:"
+msgstr "英語ソースを変更した後、メッセージカタログを更新する必要があります："
+
+#: ../../source/maintenance.md:12
+msgid "**Extract new strings**:"
+msgstr "**新しい文字列の抽出**:"
+
+#: ../../source/maintenance.md:17
+msgid "**Update PO files**:"
+msgstr "**PO ファイルの更新**:"
+
+#: ../../source/maintenance.md:21
+#, fuzzy
+msgid ""
+"**Edit PO files**: Translate the strings in "
+"`docs/source/locale/ja/LC_MESSAGES/`."
+msgstr "`docs/source/locale/ja/LC_MESSAGES/` 内の文字列を翻訳します。"
+
+#: ../../source/maintenance.md:23
+msgid "**Build the Japanese version**:"
+msgstr "**日本語版のビルド**:"
+
+#: ../../source/maintenance.md:28
+msgid "Read the Docs"
+msgstr "Read the Docs"
+
+#: ../../source/maintenance.md:29
+msgid ""
+"Pushing to the `main` branch triggers an automatic build on Read the "
+"Docs. Ensure `.readthedocs.yaml` and `docs/requirements.txt` are up to "
+"date."
+msgstr ""
+"`main` ブランチに push すると、Read the Docs "
+"上で自動的にビルドがトリガーされます。`.readthedocs.yaml` と `docs/requirements.txt` "
+"が最新であることを確認してください。"
+
+#~ msgid "**Edit PO files**:"
+#~ msgstr "**PO ファイルの編集**:"
+

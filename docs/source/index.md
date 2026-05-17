@@ -9,6 +9,8 @@ Welcome to the Spec-Craft documentation.
 strategy
 installation
 domain-guides
+maintenance
+
 ```
 
 ## Introduction
