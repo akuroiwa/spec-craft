@@ -1,7 +1,7 @@
 # Spec-Craft
 
-![PyPI - Downloads](https://img.shields.io/pypi/dm/spec-craft)
-![Read the Docs (version)](https://img.shields.io/readthedocs/spec-craft/latest)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/spec-craft)](https://pypi.org/project/spec-craft/)
+[![Read the Docs (version)](https://img.shields.io/readthedocs/spec-craft/latest)](https://spec-craft.readthedocs.io/en/latest/)
 
 Obsidian-based Spec-Driven Development (SDD) toolkit with MCP and spec-kit integration.
 
