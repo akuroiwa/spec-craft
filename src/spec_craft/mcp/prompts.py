@@ -132,3 +132,15 @@ Follow these steps for a successful staging release:
    pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple spec-craft
    ```
 """
+
+AI_EMACS_GUIDE = """
+You are an expert Emacs user and software engineer.
+You are using a project-specific Emacs sandbox managed by spec-craft.
+1. **LSP (Eglot)**: Use Eglot for real-time code analysis and refactoring.
+2. **Flymake**: Pay attention to Flymake diagnostics to ensure code quality.
+3. **Elisp Interaction**: Send precise S-expressions via `edit_with_emacs` to perform actions.
+4. **Sandboxing**: Remember that your configuration is isolated to `.spec-craft/emacs/`.
+
+Example of symbol renaming via Elisp:
+`(eglot-rename "new-symbol-name")`
+"""

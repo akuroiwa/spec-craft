@@ -32,6 +32,8 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
     blender_driver = BlenderDriver(detector.root_path)
     from spec_craft.core.drivers.bonsai import BonsaiDriver
     bonsai_driver = BonsaiDriver(detector.root_path)
+    from spec_craft.core.emacs import EmacsManager
+    emacs_manager = EmacsManager(detector.root_path)
 
     @mcp.tool()
     def analyze_workspace() -> dict:
@@ -156,6 +158,49 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
         return str(o_path.relative_to(detector.root_path))
 
     @mcp.tool()
+    def render_blender_svg(script_path: str, output_name: str) -> str:
+        """Renders a 3D scene to SVG using Blender Freestyle for AI analysis.
+        
+        Args:
+            script_path: Path to the generated Blender Python script.
+            output_name: Filename for the resulting SVG (without extension).
+        """
+        s_path = detector.root_path / script_path
+        o_path = build_manager.get_output_path("3d", "universal", output_name).with_suffix(".svg")
+        
+        blender_driver.render_svg(s_path, o_path)
+        
+        return str(o_path.relative_to(detector.root_path))
+
+    @mcp.tool()
+    def setup_emacs_sandbox() -> dict:
+        """Initializes a project-specific Emacs environment.
+        
+        Returns:
+            JSON status of the sandbox and daemon.
+        """
+        emacs_manager.ensure_sandbox()
+        started = emacs_manager.start_daemon()
+        return {
+            "status": "Running" if started else "Failed",
+            "sandbox_dir": str(emacs_manager.sandbox_dir),
+            "socket_name": emacs_manager.socket_name
+        }
+
+    @mcp.tool()
+    def edit_with_emacs(command: str, file_path: Optional[str] = None) -> str:
+        """Executes Elisp commands via emacsclient to modify or analyze files.
+        
+        Args:
+            command: The Elisp command or action to execute.
+            file_path: Optional path to a file to open before executing the command.
+        """
+        if file_path:
+            return emacs_manager.edit_file(file_path, command)
+        else:
+            return emacs_manager.execute_command(command)
+
+    @mcp.tool()
     def trigger_full_build() -> dict:
         """Coordinates a full build of all pending assets (SVG, CAD, 3D, Architecture)."""
         return {
@@ -218,6 +263,11 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
     def test_pypi_release_checklist() -> str:
         """A step-by-step guide for performing the first release to Test PyPI."""
         return prompts.TEST_PYPI_CHECKLIST
+
+    @mcp.prompt()
+    def ai_emacs_guide() -> str:
+        """Guidance for using the isolated Emacs environment."""
+        return prompts.AI_EMACS_GUIDE
 
     return mcp
 

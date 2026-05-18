@@ -95,13 +95,41 @@ class WorkspaceDetector:
             "install_command": "curl -LsSf https://astral.sh/uv/install.sh | sh" if not has_uv else None
         })
 
-        # 5. Blender Bonsai
-        # Detecting Blender add-ons usually requires running blender, 
-        # but we can check for common installation paths or assume manual check.
+        # 5. Blender Bonsai & Freestyle
+        has_blender = shutil.which("blender") is not None
+        status.append({
+            "tool_name": "blender",
+            "is_installed": has_blender,
+            "install_command": "Visit https://www.blender.org/ to install Blender" if not has_blender else None
+        })
+
         status.append({
             "tool_name": "Bonsai (BlenderBIM)",
             "is_installed": False,  # Placeholder for manual/scripted check
             "install_command": "Visit https://bonsai-bim.org/ to install the Blender add-on"
+        })
+
+        status.append({
+            "tool_name": "Blender Freestyle SVG",
+            "is_installed": has_blender, # Usually bundled, but needs check
+            "install_command": "Enable 'Freestyle SVG Exporter' in Blender Preferences"
+        })
+
+        # 6. Emacs
+        has_emacs = shutil.which("emacs") is not None
+        emacs_version = None
+        if has_emacs:
+            try:
+                v_out = subprocess.run(["emacs", "--version"], capture_output=True, text=True).stdout
+                emacs_version = v_out.split("\n")[0].split()[-1]
+            except Exception:
+                pass
+
+        status.append({
+            "tool_name": "emacs",
+            "is_installed": has_emacs,
+            "version": emacs_version,
+            "install_command": "sudo apt install emacs" if not has_emacs else None
         })
 
         return status

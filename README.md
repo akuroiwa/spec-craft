@@ -47,7 +47,10 @@ spec-craft browse
 This starts a local server and opens a Three.js viewer. You can load specific models using query parameters: `http://localhost:8080/?model=cad/universal/my_part.stl`.
 
 ### Visual Feedback Loop
-When triggering a CAD build, spec-craft can generate SVG projections of the model. These are ideal for AI vision analysis, allowing your agent to "see" the dimensions and propose improvements.
+When triggering a CAD build or rendering a 3D scene, spec-craft can generate SVG projections. These are ideal for AI vision analysis, allowing your agent to "see" the dimensions and propose improvements.
+
+### Isolated AI Editing
+Spec-Craft provides a dedicated Emacs sandbox for AI agents. This environment is isolated from your personal configuration and comes pre-configured with LSP (Eglot) and Linting (Flymake) support to ensure high-quality code generation.
 
 ## Usage
 

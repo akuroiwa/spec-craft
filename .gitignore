@@ -220,3 +220,4 @@ node_modules/
 # docs/source/locale/ (tracked but excluded from some checks)
 _research_references/OpenJSCAD.org/
 _research_references/IfcOpenShell/
+.spec-craft/emacs/

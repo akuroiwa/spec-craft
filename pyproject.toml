@@ -1,6 +1,6 @@
 [project]
 name = "spec-craft"
-version = "0.1.1"
+version = "0.1.2"
 description = "Obsidian-based Spec-Driven Development (SDD) toolkit with MCP and spec-kit integration."
 authors = [
     {name = "Akihiro Kuroiwa", email = "akuroiwa@env-reform.com"},
