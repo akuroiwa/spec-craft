@@ -133,6 +133,25 @@ Follow these steps for a successful staging release:
    ```
 """
 
+BOOT_TACTICAL_KNOWLEDGE = """
+# Bootstrapping Tactical Knowledge
+
+To perform tactical tasks (spec, plan, tasks, implement), you must first understand the command definitions for this project's AI agent.
+
+1. **Locate Definitions**: Use `analyze_workspace` to find the `agent_command_path`.
+2. **Read Logic**: List the directory and read the `.toml` files (e.g., `speckit.plan.toml`).
+3. **Understand Scenarios**: Each TOML contains the logic and expected "Given/When/Then" scenarios for that tactical step.
+4. **Suggest, Don't Hide**: When you identify a tactical need:
+   - Identify the correct script from the TOML (e.g., `.specify/scripts/bash/setup-plan.sh`).
+   - Construct the command with the necessary arguments.
+   - **Present the command to the user** and ask for confirmation.
+   - Use `run_shell_command` only after the user agrees.
+
+This ensures that interactive events like SSH password prompts can be handled safely by the user.
+
+**Current Priority**: Always prefer suggesting slash commands (e.g., `/speckit.plan`) if you are in an environment that supports them, otherwise suggest the direct shell command.
+"""
+
 AI_EMACS_GUIDE = """
 You are an expert Emacs user and software engineer.
 You are using a project-specific Emacs sandbox managed by spec-craft.

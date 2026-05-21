@@ -80,16 +80,6 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
             return {"error": f"Invalid domain: {domain}. Supported domains are: {[d.value for d in GenerativeDomain]}"}
 
     @mcp.tool()
-    def execute_tactical_script(script_name: str, arguments: Optional[List[str]] = None) -> dict:
-        """Executes a spec-kit tactical script from .specify/scripts/bash/.
-        
-        Args:
-            script_name: The name of the script file (e.g., 'check-prerequisites.sh').
-            arguments: Optional list of command-line arguments for the script.
-        """
-        return executor.execute(script_name, arguments)
-
-    @mcp.tool()
     def trigger_svg_build(template_path: str, obsidian_path: str, lang: str) -> str:
         """Generates a translated SVG from a template and Obsidian dictionary.
         
@@ -268,6 +258,11 @@ def create_mcp_server(root_path: Optional[Path] = None) -> FastMCP:
     def ai_emacs_guide() -> str:
         """Guidance for using the isolated Emacs environment."""
         return prompts.AI_EMACS_GUIDE
+
+    @mcp.prompt()
+    def boot_tactical_knowledge() -> str:
+        """Guides the AI to discover and follow spec-kit tactical definitions."""
+        return prompts.BOOT_TACTICAL_KNOWLEDGE
 
     return mcp
 

@@ -41,12 +41,19 @@ class WorkspaceDetector:
         return path if path.is_dir() else None
 
     def get_metadata(self) -> dict:
-        return {
+        metadata = {
             "root_path": str(self.root_path),
             "is_git_repo": self.is_git_repo,
             "obsidian_path": str(self.obsidian_path) if self.obsidian_path else None,
             "specify_path": str(self.specify_path) if self.specify_path else None,
         }
+        
+        # Detect agent command path
+        gemini_path = self.root_path / ".gemini" / "commands"
+        if gemini_path.is_dir():
+            metadata["agent_command_path"] = str(gemini_path)
+            
+        return metadata
 
     def check_environment(self) -> List[dict]:
         """Detects missing prerequisites for the Spec-Craft pipeline."""

@@ -52,6 +52,9 @@ When triggering a CAD build or rendering a 3D scene, spec-craft can generate SVG
 ### Isolated AI Editing
 Spec-Craft provides a dedicated Emacs sandbox for AI agents. This environment is isolated from your personal configuration and comes pre-configured with LSP (Eglot) and Linting (Flymake) support to ensure high-quality code generation.
 
+### Transparent Tactical Workflow
+Spec-Craft prioritizes transparency and security for project operations. Instead of executing sensitive tasks (like branch creation or planning) in the background, your AI agent will read the `spec-kit` definitions and propose the exact command for you to run. This ensures that interactive events, such as SSH password prompts, are handled safely by you in your own terminal.
+
 ## Usage
 
 ### CLI
