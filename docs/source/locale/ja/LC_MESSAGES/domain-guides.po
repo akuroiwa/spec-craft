@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Spec-Craft\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-17 23:28+0900\n"
+"POT-Creation-Date: 2026-05-21 15:16+0900\n"
 "PO-Revision-Date: 2026-05-14 11:32+0900\n"
 "Last-Translator: Akihiro Kuroiwa <akuroiwa@env-reform.com>\n"
 "Language: ja\n"
@@ -76,26 +76,79 @@ msgstr ""
 msgid "**Process**: Obsidian Spec → Blender Python Script → Automated 3D Build."
 msgstr "**Process**: Obsidian Spec → Blender Python Script → Automated 3D Build."
 
-#: ../../source/domain-guides.md:18
+#: ../../source/domain-guides.md:17
+msgid ""
+"**Visual Verification**: Use `render_blender_svg` to generate line-art "
+"projections for AI analysis."
+msgstr ""
+"**Visual Verification**: Use `render_blender_svg` to generate line-art "
+"projections for AI analysis."
+
+#: ../../source/domain-guides.md:19
 msgid "Architectural Design (Bonsai)"
 msgstr "建築設計 (Bonsai)"
 
-#: ../../source/domain-guides.md:19
+#: ../../source/domain-guides.md:20
 msgid ""
 "Manage architectural strategies and tactical implementations using the "
 "IFC (Industry Foundation Classes) standard. Spec-Craft generates Python "
 "scripts that utilize the Bonsai (BlenderBIM) API to create BIM-compliant "
 "models."
 msgstr ""
-"IFC (Industry Foundation Classes) 標準を使用して、建築の戦略と戦術的な実装を管理します。Spec-Craft は、Bonsai "
-"(BlenderBIM) API を活用して BIM 準拠のモデルを作成するための Python スクリプトを生成します。"
+"IFC (Industry Foundation Classes) 標準を使用して、建築の戦略と戦術的な実装を管理します。Spec-Craft "
+"は、Bonsai (BlenderBIM) API を活用して BIM 準拠のモデルを作成するための Python スクリプトを生成します。"
 
-#: ../../source/domain-guides.md:20
+#: ../../source/domain-guides.md:21
 msgid "**Standards**: OpenBIM / IFC compliance."
 msgstr "**規格**: OpenBIM / IFC 準拠。"
 
-#: ../../source/domain-guides.md:21
+#: ../../source/domain-guides.md:22
 msgid ""
 "**Workflow**: Obsidian Strategy → Bonsai Python Script → IFC Asset "
 "Generation."
 msgstr "**ワークフロー**: Obsidian の戦略 → Bonsai Python スクリプト → IFC アセット生成。"
+
+#: ../../source/domain-guides.md:23
+msgid ""
+"**AI Verification**: AI can visually inspect walls and slabs using SVG "
+"projections to ensure compliance with the strategy."
+msgstr ""
+"**AI Verification**: AI can visually inspect walls and slabs using SVG "
+"projections to ensure compliance with the strategy."
+
+#: ../../source/domain-guides.md:25
+msgid "AI-Assisted Implementation (Emacs Sandbox)"
+msgstr "AI-Assisted Implementation (Emacs Sandbox)"
+
+#: ../../source/domain-guides.md:26
+msgid ""
+"Spec-Craft provides a dedicated Emacs sandbox to help AI agents write and"
+" verify code."
+msgstr ""
+"Spec-Craft provides a dedicated Emacs sandbox to help AI agents write and"
+" verify code."
+
+#: ../../source/domain-guides.md:27
+msgid ""
+"**Isolation**: Uses a project-specific init directory (`.spec-"
+"craft/emacs/`) to avoid affecting your personal config."
+msgstr ""
+"**Isolation**: Uses a project-specific init directory (`.spec-"
+"craft/emacs/`) to avoid affecting your personal config."
+
+#: ../../source/domain-guides.md:28
+msgid ""
+"**Capabilities**: Pre-configured with LSP (Eglot), Linting (Flymake), and"
+" Tree-sitter for high-precision editing."
+msgstr ""
+"**Capabilities**: Pre-configured with LSP (Eglot), Linting (Flymake), and"
+" Tree-sitter for high-precision editing."
+
+#: ../../source/domain-guides.md:29
+msgid ""
+"**Workflow**: AI initializes the sandbox with `setup_emacs_sandbox` and "
+"performs edits via `edit_with_emacs`."
+msgstr ""
+"**Workflow**: AI initializes the sandbox with `setup_emacs_sandbox` and "
+"performs edits via `edit_with_emacs`."
+

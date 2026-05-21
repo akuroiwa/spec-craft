@@ -4,6 +4,7 @@
 Before installing Spec-Craft, ensure you have the following:
 - **Python**: Version 3.10 or higher.
 - **Node.js**: Required for CAD (JSCAD) builds.
+- **Emacs**: Version 29.1 or higher (Recommended for isolated AI editing).
 - **uv**: Highly recommended for fast package management.
 
 ## Installation

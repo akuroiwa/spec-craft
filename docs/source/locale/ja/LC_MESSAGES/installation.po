@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version:  Spec-Craft\n"
-"Report-Msgid-Bugs-To:\n"
-"POT-Creation-Date: 2026-05-12 15:42+0900\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-21 15:16+0900\n"
 "PO-Revision-Date: 2026-05-14 10:57+0900\n"
 "Last-Translator: Akihiro Kuroiwa <akuroiwa@env-reform.com>\n"
 "Language: ja\n"
@@ -35,54 +35,58 @@ msgid "**Node.js**: Required for CAD (JSCAD) builds."
 msgstr "Node.js: CAD (JSCAD) ビルドに必要。"
 
 #: ../../source/installation.md:7
+msgid "**Emacs**: Version 29.1 or higher (Recommended for isolated AI editing)."
+msgstr "**Emacs**: Version 29.1 or higher (Recommended for isolated AI editing)."
+
+#: ../../source/installation.md:8
 msgid "**uv**: Highly recommended for fast package management."
 msgstr "uv: 高速なパッケージ管理のために強く推奨されます。"
 
-#: ../../source/installation.md:9
+#: ../../source/installation.md:10
 msgid "Installation"
 msgstr "インストール"
 
-#: ../../source/installation.md:10
+#: ../../source/installation.md:11
 msgid ""
 "The easiest way to install Spec-Craft is using `uv` or `pipx` to avoid "
 "environment conflicts:"
 msgstr "Spec-Craftをインストールする最も簡単な方法は uv を使うことです："
 
-#: ../../source/installation.md:12
+#: ../../source/installation.md:13
 msgid "Using uv (Recommended)"
 msgstr "uv を使う場合 (推奨)"
 
-#: ../../source/installation.md:17
+#: ../../source/installation.md:18
 msgid "Using pipx"
 msgstr "pipx を使う場合"
 
-#: ../../source/installation.md:22
+#: ../../source/installation.md:23
 msgid "From Source (for development)"
 msgstr "ソースからインストールする場合 (開発用)"
 
-#: ../../source/installation.md:29
+#: ../../source/installation.md:30
 msgid "AI Agent Configuration"
 msgstr "AIエージェントの設定"
 
-#: ../../source/installation.md:30
+#: ../../source/installation.md:31
 msgid ""
 "Spec-Craft provides an MCP (Model Context Protocol) server. Configuration"
 " depends on your AI agent:"
 msgstr "Spec-CraftはMCP（Model Context Protocol）サーバーを提供します。設定は使用するAIエージェントによって異なります："
 
-#: ../../source/installation.md:32
+#: ../../source/installation.md:33
 msgid "Gemini CLI"
 msgstr "Gemini CLI"
 
-#: ../../source/installation.md:33
+#: ../../source/installation.md:34
 msgid "Add the following to your `.gemini/settings.json`:"
 msgstr "`.gemini/settings.json` に設定を追加します。"
 
-#: ../../source/installation.md:46
+#: ../../source/installation.md:47
 msgid "Claude Desktop"
 msgstr "Claude Desktop"
 
-#: ../../source/installation.md:47
+#: ../../source/installation.md:48
 msgid "Add to `claude_desktop_config.json`:"
 msgstr "`claude_desktop_config.json` に設定を追加します。"
 
