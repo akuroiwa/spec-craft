@@ -208,10 +208,13 @@ __marimo__/
 
 # Research and Reference files
 gemini-*.txt
+chatgpt-*.txt
 _research_references/
 
 # Gemini CLI security
 .gemini/
+.antigravitycli/
+.agents/
 
 *.pyc
 .venv/

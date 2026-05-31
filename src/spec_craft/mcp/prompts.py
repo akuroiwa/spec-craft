@@ -69,16 +69,18 @@ When installing spec-kit extensions for your AI agent, search the official regis
 
 Use the following directory mapping for manual installations:
 
-| AI Agent | Extension Command Directory |
-| :--- | :--- |
-| **GitHub Copilot** | `.github/prompts/` |
-| **Claude Code** | `.claude/commands/` |
-| **Gemini CLI** | `.gemini/commands/` |
-| **Cursor** | `.cursor/commands/` |
-| **Windsurf** | `.windsurf/workflows/` |
-| **Codex CLI** | `.agents/skills/` |
+| AI Agent | Extension Command Directory | Format |
+| :--- | :--- | :--- |
+| **Antigravity CLI** | `.agents/skills/` | Markdown (`speckit-<name>/SKILL.md`) |
+| **GitHub Copilot** | `.github/prompts/` | Markdown |
+| **Claude Code** | `.claude/skills/` or `.claude/commands/` | Markdown / TOML |
+| **Gemini CLI** | `.gemini/commands/` | TOML (`.toml`) |
+| **Cursor** | `.cursor/commands/` or `.cursor/skills/` | TOML / Markdown |
+| **Windsurf** | `.windsurf/workflows/` | Markdown |
+| **Codex CLI** | `.agents/skills/` | Markdown |
+| **Aider** | `.agents/skills/` or custom | Markdown / `spec-kit-mcp` |
 
-To add a command, place the markdown definition file in the corresponding directory. 
+To add a command, place the markdown or TOML definition file in the corresponding directory. 
 Shared templates go to `.specify/templates/`.
 """
 
@@ -138,18 +140,18 @@ BOOT_TACTICAL_KNOWLEDGE = """
 
 To perform tactical tasks (spec, plan, tasks, implement), you must first understand the command definitions for this project's AI agent.
 
-1. **Locate Definitions**: Use `analyze_workspace` to find the `agent_command_path`.
-2. **Read Logic**: List the directory and read the `.toml` files (e.g., `speckit.plan.toml`).
-3. **Understand Scenarios**: Each TOML contains the logic and expected "Given/When/Then" scenarios for that tactical step.
+1. **Locate Definitions**: Use `analyze_workspace` to find the `agent_command_path` or check `agent_command_paths` mapping.
+2. **Read Logic**: List the directory and read either the `.toml` files (e.g., `speckit.plan.toml`) or `SKILL.md` folders (e.g., `.agents/skills/speckit-plan/SKILL.md`).
+3. **Understand Scenarios**: Each TOML or markdown definition contains the logic and expected "Given/When/Then" scenarios for that tactical step.
 4. **Suggest, Don't Hide**: When you identify a tactical need:
-   - Identify the correct script from the TOML (e.g., `.specify/scripts/bash/setup-plan.sh`).
+   - Identify the correct script from the definition (e.g., `.specify/scripts/bash/setup-plan.sh`).
    - Construct the command with the necessary arguments.
    - **Present the command to the user** and ask for confirmation.
    - Use `run_shell_command` only after the user agrees.
 
 This ensures that interactive events like SSH password prompts can be handled safely by the user.
 
-**Current Priority**: Always prefer suggesting slash commands (e.g., `/speckit.plan`) if you are in an environment that supports them, otherwise suggest the direct shell command.
+**Current Priority**: Always prefer suggesting slash commands (e.g., `/speckit.plan`) if you are in an environment that supports them (like Antigravity or Claude Code), otherwise suggest the direct shell command or read the markdown definition directly (like in Aider).
 """
 
 AI_EMACS_GUIDE = """

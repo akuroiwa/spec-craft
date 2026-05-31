@@ -22,3 +22,21 @@ def test_detector_metadata(temp_workspace):
     metadata = detector.get_metadata()
     assert metadata["is_git_repo"] is False
     assert metadata["obsidian_path"].endswith("obsidian")
+    assert "agent_command_path" not in metadata
+    assert "agent_command_paths" not in metadata
+
+def test_detector_agent_paths(temp_workspace):
+    """Verify detection of multiple agent command paths."""
+    (temp_workspace / ".gemini").mkdir()
+    (temp_workspace / ".gemini" / "commands").mkdir()
+    (temp_workspace / ".agents").mkdir()
+    (temp_workspace / ".agents" / "skills").mkdir()
+    
+    detector = WorkspaceDetector(temp_workspace)
+    metadata = detector.get_metadata()
+    
+    assert "agent_command_paths" in metadata
+    assert metadata["agent_command_paths"]["gemini"] == str(temp_workspace / ".gemini" / "commands")
+    assert metadata["agent_command_paths"]["agy"] == str(temp_workspace / ".agents" / "skills")
+    # agy should be preferred over gemini
+    assert metadata["agent_command_path"] == str(temp_workspace / ".agents" / "skills")

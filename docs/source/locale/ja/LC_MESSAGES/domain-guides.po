@@ -74,15 +74,15 @@ msgstr ""
 
 #: ../../source/domain-guides.md:16
 msgid "**Process**: Obsidian Spec → Blender Python Script → Automated 3D Build."
-msgstr "**Process**: Obsidian Spec → Blender Python Script → Automated 3D Build."
+msgstr "**プロセス**: Obsidian 仕様 → Blender Python スクリプト → 自動 3D ビルド。"
 
 #: ../../source/domain-guides.md:17
 msgid ""
 "**Visual Verification**: Use `render_blender_svg` to generate line-art "
 "projections for AI analysis."
 msgstr ""
-"**Visual Verification**: Use `render_blender_svg` to generate line-art "
-"projections for AI analysis."
+"**視覚的検証 (Visual Verification)**: `render_blender_svg` を使用して線画プロジェクションを生成し、AI "
+"による分析に活用します。"
 
 #: ../../source/domain-guides.md:19
 msgid "Architectural Design (Bonsai)"
@@ -113,42 +113,37 @@ msgid ""
 "**AI Verification**: AI can visually inspect walls and slabs using SVG "
 "projections to ensure compliance with the strategy."
 msgstr ""
-"**AI Verification**: AI can visually inspect walls and slabs using SVG "
-"projections to ensure compliance with the strategy."
+"**AIによる検証**: AIは戦略との整合性を確保するために、SVGプロジェクションを用いて壁やスラブを視覚的に検査できます。"
 
 #: ../../source/domain-guides.md:25
 msgid "AI-Assisted Implementation (Emacs Sandbox)"
-msgstr "AI-Assisted Implementation (Emacs Sandbox)"
+msgstr "AI支援による実装（Emacs サンドボックス）"
 
 #: ../../source/domain-guides.md:26
 msgid ""
 "Spec-Craft provides a dedicated Emacs sandbox to help AI agents write and"
 " verify code."
 msgstr ""
-"Spec-Craft provides a dedicated Emacs sandbox to help AI agents write and"
-" verify code."
+"Spec-Craft は、AI エージェントがコードを記述および検証できるように、専用の Emacs サンドボックスを提供します。"
 
 #: ../../source/domain-guides.md:27
 msgid ""
 "**Isolation**: Uses a project-specific init directory (`.spec-"
 "craft/emacs/`) to avoid affecting your personal config."
 msgstr ""
-"**Isolation**: Uses a project-specific init directory (`.spec-"
-"craft/emacs/`) to avoid affecting your personal config."
+"**分離 (Isolation)**: 個人用の Emacs 設定に影響を与えないよう、プロジェクト固有の初期化ディレクトリ（`.spec-craft/emacs/`）を使用します。"
 
 #: ../../source/domain-guides.md:28
 msgid ""
 "**Capabilities**: Pre-configured with LSP (Eglot), Linting (Flymake), and"
 " Tree-sitter for high-precision editing."
 msgstr ""
-"**Capabilities**: Pre-configured with LSP (Eglot), Linting (Flymake), and"
-" Tree-sitter for high-precision editing."
+"**機能 (Capabilities)**: 高精度な編集を行うために、LSP (Eglot)、コーディング規約・エラー検証 (Flymake)、および Tree-sitter が事前設定されています。"
 
 #: ../../source/domain-guides.md:29
 msgid ""
 "**Workflow**: AI initializes the sandbox with `setup_emacs_sandbox` and "
 "performs edits via `edit_with_emacs`."
 msgstr ""
-"**Workflow**: AI initializes the sandbox with `setup_emacs_sandbox` and "
-"performs edits via `edit_with_emacs`."
+"**ワークフロー (Workflow)**: AI は `setup_emacs_sandbox` でサンドボックスを初期化し、`edit_with_emacs` を通じてコードの編集を行います。"
 

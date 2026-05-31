@@ -12,13 +12,14 @@ The foundation of Spec-Craft is complete.
 - Isolated Editing: AI-dedicated Emacs sandbox with LSP/Linting.
 - Transparency: "Suggest-and-Confirm" workflow for secure operations.
 
-## Transition Note: From gemini-cli to Antigravity CLI
-This project is transitioning to a new AI agent environment (Antigravity CLI).
-**Instruction for the new Gemini Agent**:
+## Transition Note: From gemini-cli to Antigravity CLI / Multi-Agent Workflows
+This project is transitioning to a new AI agent environment (Antigravity CLI) and now supports general multi-agent SDD workflows (including Antigravity CLI, Gemini CLI, Claude Code, and Aider).
+**Instruction for the AI Agent**:
 1. Read the full tactical history in the `specs/` directory (Phases 001-013).
 2. Review the technical manual at [https://spec-craft.readthedocs.io/](https://spec-craft.readthedocs.io/).
 3. Use `spec-craft check-env` to verify the local environment.
 4. Continue using the SDD workflow (Specify -> Plan -> Tasks -> Implement).
+5. For Aider or local workflows, utilize direct markdown skill reading or `spec-kit-mcp` integration options.
 
 ## Future Roadmap
 - Deeper integration with architectural analysis tools.

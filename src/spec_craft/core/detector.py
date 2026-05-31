@@ -48,10 +48,42 @@ class WorkspaceDetector:
             "specify_path": str(self.specify_path) if self.specify_path else None,
         }
         
-        # Detect agent command path
-        gemini_path = self.root_path / ".gemini" / "commands"
-        if gemini_path.is_dir():
-            metadata["agent_command_path"] = str(gemini_path)
+        # Detect agent command paths
+        known_paths = {
+            "agy": ".agents/skills",
+            "gemini": ".gemini/commands",
+            "claude": ".claude/skills",
+            "copilot": ".github/prompts",
+            "cursor": ".cursor/commands",
+            "windsurf": ".windsurf/workflows",
+            "codex": ".agents/skills",
+        }
+        
+        agent_paths = {}
+        for agent, rel_path in known_paths.items():
+            path = self.root_path / rel_path
+            if path.is_dir():
+                agent_paths[agent] = str(path)
+                
+        # Additional fallbacks/alternatives
+        claude_commands = self.root_path / ".claude" / "commands"
+        if claude_commands.is_dir() and "claude" not in agent_paths:
+            agent_paths["claude"] = str(claude_commands)
+            
+        cursor_skills = self.root_path / ".cursor" / "skills"
+        if cursor_skills.is_dir() and "cursor" not in agent_paths:
+            agent_paths["cursor"] = str(cursor_skills)
+            
+        if agent_paths:
+            metadata["agent_command_paths"] = agent_paths
+            # Set the primary agent_command_path (fallback)
+            # Prefer agy/gemini, or the first one found
+            if "agy" in agent_paths:
+                metadata["agent_command_path"] = agent_paths["agy"]
+            elif "gemini" in agent_paths:
+                metadata["agent_command_path"] = agent_paths["gemini"]
+            else:
+                metadata["agent_command_path"] = list(agent_paths.values())[0]
             
         return metadata
 

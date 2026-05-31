@@ -89,41 +89,37 @@ msgstr ""
 
 #: ../../source/strategy.md:20
 msgid "Operational Transparency"
-msgstr "Operational Transparency"
+msgstr "運用の透明性（Operational Transparency）"
 
 #: ../../source/strategy.md:21
 msgid ""
 "Spec-Craft prioritizes security and reliability. Instead of executing "
 "sensitive tactical tasks in hidden background processes, AI agents:"
 msgstr ""
-"Spec-Craft prioritizes security and reliability. Instead of executing "
-"sensitive tactical tasks in hidden background processes, AI agents:"
+"Spec-Craft はセキュリティと信頼性を最優先します。バックグラウンドの隠されたプロセスで機密性の高い戦術タスクを実行する代わりに、AI エージェントは以下を行います："
 
 #: ../../source/strategy.md:22
 msgid ""
 "**Discover**: Read command definitions (TOML) to understand the required "
 "steps."
 msgstr ""
-"**Discover**: Read command definitions (TOML) to understand the required "
-"steps."
+"**発見 (Discover)**: 必要な手順を理解するために、コマンド定義（TOML または Markdown スキル）を読み込みます。"
 
 #: ../../source/strategy.md:23
 msgid "**Propose**: Suggest the exact shell command to the user."
-msgstr "**Propose**: Suggest the exact shell command to the user."
+msgstr "**提案 (Propose)**: 実行すべき正確なシェルコマンドをユーザーに提案します。"
 
 #: ../../source/strategy.md:24
 msgid ""
 "**Confirm**: Execute only after the user provides confirmation in their "
 "terminal."
 msgstr ""
-"**Confirm**: Execute only after the user provides confirmation in their "
-"terminal."
+"**確認 (Confirm)**: ユーザーがターミナルで明示的な確認を行った後にのみ実行します。"
 
 #: ../../source/strategy.md:26
 msgid ""
 "This interactive approach ensures that secure events, such as SSH "
 "password prompts, are handled safely by the human creator."
 msgstr ""
-"This interactive approach ensures that secure events, such as SSH "
-"password prompts, are handled safely by the human creator."
+"この対話的なアプローチにより、SSH パスワードプロンプトのようなセキュリティに関わるイベントも、人間の開発者によって安全に処理されます。"
 
