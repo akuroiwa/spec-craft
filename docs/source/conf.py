@@ -4,7 +4,7 @@
 project = 'Spec-Craft'
 copyright = '2026, Akihiro Kuroiwa & Gemini'
 author = 'Akihiro Kuroiwa & Gemini'
-release = '0.1.0'
+release = '0.1.4'
 
 # -- General configuration ---------------------------------------------------
 extensions = [
