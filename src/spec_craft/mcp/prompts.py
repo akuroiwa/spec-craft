@@ -59,6 +59,21 @@ To prevent multi-line commit messages from being misinterpreted as shell command
 1. All commit messages MUST be written to a temporary file (e.g., `.gemini/commit_msg.txt`) before committing.
 2. The `git commit` command MUST use the `-F` (or `--file`) option pointing to this temporary file.
 3. Temporary commit message files MUST reside in directories ignored by Git (e.g., `.gemini/`) to avoid accidental leakage or tracking.
+
+### IX. RST Inline Markup in CJK Languages (Japanese / Chinese / Korean)
+When writing or translating RST (reStructuredText) content that contains CJK
+(full-width) characters, Sphinx will fail to parse inline markup unless it is
+surrounded by ASCII (half-width) spaces.
+
+**Rule**: Place a half-width space (ASCII U+0020) immediately before and after
+every inline marker when it is adjacent to full-width characters.
+
+- Correct:   日本語の ``コード`` テキスト
+- Incorrect: 日本語の``コード``テキスト  ← Sphinx reports "no closing backtick"
+
+This applies to all inline roles: ``literals``, **bold**, *italic*,
+`hyperlinks`_, and :ref:`cross-references`. Failure to follow this rule
+causes build warnings or broken output in the Japanese documentation.
 """
 
 AGENT_REGISTRY_URL = "https://geminicli.com/extensions/"
@@ -138,20 +153,114 @@ Follow these steps for a successful staging release:
 BOOT_TACTICAL_KNOWLEDGE = """
 # Bootstrapping Tactical Knowledge
 
-To perform tactical tasks (spec, plan, tasks, implement), you must first understand the command definitions for this project's AI agent.
+---
 
-1. **Locate Definitions**: Use `analyze_workspace` to find the `agent_command_path` or check `agent_command_paths` mapping.
-2. **Read Logic**: List the directory and read either the `.toml` files (e.g., `speckit.plan.toml`) or `SKILL.md` folders (e.g., `.agents/skills/speckit-plan/SKILL.md`).
-3. **Understand Scenarios**: Each TOML or markdown definition contains the logic and expected "Given/When/Then" scenarios for that tactical step.
-4. **Suggest, Don't Hide**: When you identify a tactical need:
-   - Identify the correct script from the definition (e.g., `.specify/scripts/bash/setup-plan.sh`).
-   - Construct the command with the necessary arguments.
-   - **Present the command to the user** and ask for confirmation.
-   - Use `run_shell_command` only after the user agrees.
+## 0. Tool Roles — What Belongs to What (Read This First)
 
-This ensures that interactive events like SSH password prompts can be handled safely by the user.
+There are TWO distinct tools involved in the SDD workflow:
 
-**Current Priority**: Always prefer suggesting slash commands (e.g., `/speckit.plan`) if you are in an environment that supports them (like Antigravity or Claude Code), otherwise suggest the direct shell command or read the markdown definition directly (like in Aider).
+- **spec-craft** (this MCP server): Provides MCP tools like `analyze_workspace`,
+  `read_storyboard`, `trigger_svg_build`, `run_shell_command`. These are
+  invoked through the MCP protocol by your AI agent.
+
+- **spec-kit** (a SEPARATE CLI tool): Generates project scaffolding and defines
+  the SDD workflow phases (Specify → Plan → Tasks → Implement). Its command
+  definitions live in files that YOU must read:
+  - Gemini CLI:          `.gemini/commands/speckit.*.toml`
+  - Antigravity / Claude: `.agents/skills/speckit-*/SKILL.md`
+
+  **spec-craft did NOT create these files.** They are maintained by spec-kit
+  and define the exact steps for each SDD phase.
+
+---
+
+## 1. CRITICAL — Slash Commands vs Shell Commands
+
+`/speckit.specify`, `/speckit.plan`, `/speckit.tasks`, `/speckit.implement`
+are **SLASH COMMANDS** — they are UI triggers in the AI agent's command
+interface (e.g., the `/` command palette in Gemini CLI or Antigravity).
+
+**You CANNOT execute slash commands via `run_shell_command`.** They are not
+shell executables. Attempting `run_shell_command("/speckit.plan")` will fail.
+
+Correct behaviour:
+- **If the user's environment supports slash commands** (Gemini CLI, Antigravity,
+  Claude Code): Present the slash command to the user so they can trigger it
+  (e.g., "Please run `/speckit.plan` in the command palette.").
+- **If slash commands are not available** (Aider, plain terminal, MCP-only):
+  Read the corresponding TOML / SKILL.md file and execute its shell script
+  steps manually, proposing each step to the user.
+
+---
+
+## 2. MANDATORY — Read the Command Definition Before Acting
+
+Before executing any SDD phase, you MUST read the corresponding definition
+file. This is required because the file contains:
+- The exact shell script to run (e.g., `setup-plan.sh`)
+- Template paths and arguments
+- "Given / When / Then" acceptance scenarios
+
+Do NOT assume you know what a spec-kit command does. Always read it first.
+
+Steps:
+1. Use `analyze_workspace` → find `agent_command_path` or `agent_command_paths`.
+2. List the directory (e.g., `ls .gemini/commands/`).
+3. Read the relevant file (e.g., `.gemini/commands/speckit.plan.toml`).
+4. Identify the shell script to call (look for `setup-plan.sh`, etc.).
+5. Propose the shell command to the user, then use `run_shell_command` only
+   after the user confirms.
+
+---
+
+## 3. Workflow Entry Points — When a Slash Command is Triggered
+
+When the user triggers `/speckit.specify <feature-name>`:
+1. Read `.gemini/commands/speckit.specify.toml` (or `.agents/skills/speckit-specify/SKILL.md`).
+2. Run: `bash .specify/scripts/bash/create-new-feature.sh <feature-name>`
+3. Then follow the spec-template logic defined in the TOML/SKILL.md.
+
+When the user triggers `/speckit.plan`:
+1. Read `.gemini/commands/speckit.plan.toml`.
+2. Run: `bash .specify/scripts/bash/setup-plan.sh`
+3. Follow `plan-template.md` as directed by the file.
+
+When the user triggers `/speckit.tasks`:
+1. Read `.gemini/commands/speckit.tasks.toml`.
+2. Run: `bash .specify/scripts/bash/setup-tasks.sh` (if present) or follow
+   the steps defined in the TOML directly.
+
+When the user triggers `/speckit.implement`:
+1. Read `.gemini/commands/speckit.implement.toml`.
+2. Follow its step-by-step instructions, executing each shell command only
+   after proposing it to the user.
+
+**Propose each shell command to the user before running. Never run silently.**
+
+---
+
+## 4. Feature Numbering Rule
+
+When determining the next feature number (e.g., `014-...`):
+1. Run `ls specs/` to list existing feature directories.
+2. Find the **highest existing directory number** (e.g., `013` from
+   `013-workflow-reliability/`).
+3. The next number is highest + 1 formatted as 3 digits (e.g., `014`).
+4. **Never skip numbers.** Never derive the number from Obsidian phase names.
+5. The physical `specs/` directory listing is the single source of truth.
+
+---
+
+## 5. Suggest, Don't Hide
+
+When you identify a tactical need:
+- Identify the correct script from the definition (e.g., `.specify/scripts/bash/setup-plan.sh`).
+- Construct the command with the necessary arguments.
+- **Present the command to the user** and ask for confirmation.
+- Use `run_shell_command` only after the user agrees.
+
+This ensures that interactive events like SSH password prompts can be handled
+safely by the user.
 """
 
 AI_EMACS_GUIDE = """
