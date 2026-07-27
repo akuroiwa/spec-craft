@@ -261,6 +261,97 @@ When you identify a tactical need:
 
 This ensures that interactive events like SSH password prompts can be handled
 safely by the user.
+
+---
+
+## 6. Obsidian CLI Integration — Writing Files to the Vault
+
+When creating or updating Markdown files under `obsidian/` (the project's
+Obsidian vault), you MUST use the **Obsidian CLI** (`obsidian` command) so
+that Obsidian-compatible YAML front matter (metadata) is written correctly.
+Files created by plain file-write have no front matter and are treated as
+ordinary Markdown, not Obsidian notes.
+
+### 6-A. Detect Obsidian CLI availability
+
+Before writing any file to `obsidian/`, run:
+
+```bash
+obsidian help
+```
+
+- If the command **succeeds** → Obsidian CLI is available. Continue to 6-B.
+- If the command **fails** (command not found / exit code ≠ 0) → Go to 6-C.
+
+### 6-B. Use Obsidian CLI to create / update notes
+
+Use the CLI commands below (the Obsidian app must be running):
+
+```bash
+# Show all available commands and options
+obsidian help
+
+# Create a new note from a template (preferred — generates front matter)
+obsidian create name="<note-name>" template=<TemplateName>
+
+# Append content to an existing note
+obsidian note:append file="<path/in/vault>" content="<text>"
+
+# Read a note (verify front matter was written)
+obsidian read file="<path/in/vault>"
+
+# Search the vault
+obsidian search query="<keyword>"
+```
+
+**IMPORTANT**: The Obsidian app must be running for the CLI to work. If the
+CLI returns an error such as "Obsidian is not running", ask the user to
+launch Obsidian first, then retry.
+
+### 6-C. Obsidian CLI not found — prompt the user
+
+If `obsidian help` fails, **do not silently fall back**. Instead:
+
+1. Inform the user:
+   > "The `obsidian` command was not found. To enable Obsidian front matter
+   > in generated notes, please install and activate the Obsidian CLI:"
+2. Provide the setup steps:
+   - **Step 1 — Update Obsidian**: Download the latest installer from
+     https://obsidian.md/download (version 1.8.10 or later required).
+   - **Step 2 — Activate the CLI in Obsidian**:
+     - Open Obsidian → click the **gear icon** (⚙) at the bottom left.
+     - Go to **Settings → General** (English) or
+       **設定 → 一般** (Japanese UI) →
+       **「高度な設定」→「コマンドラインインターフェース」を有効化**.
+     - Enable **"Command line interface"**.
+   - **Step 3 — Register the CLI** (add to PATH):
+     - Linux: CLI binary is copied to `~/.local/bin/obsidian`.
+       Ensure `~/.local/bin` is in your `$PATH`.
+     - macOS: Creates a symlink at `/usr/local/bin/obsidian` (requires admin).
+     - Windows: `Obsidian.com` redirector is placed beside `Obsidian.exe`.
+   - **Step 4**: Restart your terminal and run `obsidian help` to verify.
+3. Ask the user: "Would you like to proceed with Obsidian CLI, or shall I
+   write the Markdown file directly without front matter?"
+
+### 6-D. Fallback — user declines Obsidian or refuses installation
+
+If the user **explicitly** says they do not use Obsidian, does not want to
+install it, or prefers plain Markdown:
+
+- Write the file directly using normal file creation (no `obsidian` command).
+- Add a minimal YAML front matter block manually at the top of the file
+  to preserve compatibility if the user ever opens it in Obsidian later:
+
+```markdown
+---
+title: "<Note Title>"
+date: "<YYYY-MM-DD>"
+tags: []
+---
+```
+
+- Notify the user: "Writing plain Markdown without Obsidian CLI. Front matter
+  has been added manually for future Obsidian compatibility."
 """
 
 AI_EMACS_GUIDE = """

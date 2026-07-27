@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "8e8ab9550896c87a",
+        "id": "2cfbcbec5e27f308",
         "type": "tabs",
         "children": [
           {
-            "id": "5fdf632b5d992398",
+            "id": "3e07aff0d7d3a5d7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ja/strategy.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "strategy"
+              "title": "新規タブ"
             }
           }
         ]
@@ -183,8 +179,9 @@
       "bases:新規ベースを作成": false
     }
   },
-  "active": "5fdf632b5d992398",
+  "active": "3e07aff0d7d3a5d7",
   "lastOpenFiles": [
+    "ja/strategy.md",
     "strategy.md"
   ]
 }
