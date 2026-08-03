@@ -25,8 +25,8 @@ class EmacsManager:
                 # Fallback minimal init
                 init_el.write_text(";; Minimal Spec-Craft Emacs Init\n(require 'server)\n(server-start)\n")
 
-    def start_daemon(self):
-        """Starts the Emacs daemon with the project-specific init directory."""
+    def start_daemon(self, max_wait: float = 30.0, poll_interval: float = 0.5):
+        """Starts the Emacs daemon and waits for it to become ready."""
         self.ensure_sandbox()
         
         # Check if already running
@@ -42,9 +42,15 @@ class EmacsManager:
         
         try:
             subprocess.run(command, check=True, capture_output=True)
-            # Wait a bit for the socket to initialize
-            time.sleep(1)
-            return True
+            
+            # Poll until daemon is running or timeout
+            start_time = time.time()
+            while time.time() - start_time < max_wait:
+                if self.is_daemon_running():
+                    return True
+                time.sleep(poll_interval)
+                
+            raise RuntimeError(f"Failed to start Emacs daemon within {max_wait} seconds.")
         except subprocess.CalledProcessError as e:
             raise RuntimeError(f"Failed to start Emacs daemon: {e.stderr.decode()}")
 
@@ -77,6 +83,13 @@ class EmacsManager:
         except subprocess.CalledProcessError as e:
             return f"Error: {e.stderr}"
 
+    def eval_in_buffer(self, file_path: str, elisp_action: str) -> str:
+        """Opens a file in the daemon and performs an action without saving it."""
+        abs_path = os.path.abspath(file_path)
+        # Find file, revert buffer to ensure disk sync, execute action (no save)
+        full_command = f"(with-current-buffer (find-file-noselect \"{abs_path}\") (revert-buffer t t) {elisp_action})"
+        return self.execute_command(full_command)
+
     def edit_file(self, file_path: str, elisp_action: str) -> str:
         """Opens a file in the daemon and performs an action."""
         abs_path = os.path.abspath(file_path)
@@ -87,3 +100,4 @@ class EmacsManager:
     def stop_daemon(self):
         """Stops the Emacs daemon."""
         return self.execute_command("(kill-emacs)")
+

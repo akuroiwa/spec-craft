@@ -39,21 +39,40 @@ class StoryboardParser:
                 metadata = yaml.safe_load(match.group(1)) or {}
                 content = raw_content[match.end():]
 
+        # Temporarily replace fenced code blocks to avoid parsing headers inside them
+        code_blocks = []
+        def repl(m):
+            code_blocks.append(m.group(0))
+            return f"__CODE_BLOCK_{len(code_blocks)-1}__"
+        
+        code_fence_regex = re.compile(r"```.*?```", re.DOTALL)
+        content_replaced = code_fence_regex.sub(repl, content)
+
         # Parse Sections
         sections = []
         header_regex = re.compile(r"^(#{1,6})\s+(.+)$", re.MULTILINE)
         
         # Split content by headers
-        parts = header_regex.split(content)
+        parts = header_regex.split(content_replaced)
         
+        # Helper to restore code blocks in strings
+        def restore_blocks(text: str) -> str:
+            for idx, block in enumerate(code_blocks):
+                text = text.replace(f"__CODE_BLOCK_{idx}__", block)
+            return text
+
         # parts[0] is the preamble before the first header
         if parts[0].strip():
-            sections.append(Section(title="Preamble", level=0, content=parts[0].strip()))
+            sections.append(Section(
+                title="Preamble",
+                level=0,
+                content=restore_blocks(parts[0].strip())
+            ))
             
         for i in range(1, len(parts), 3):
             level = len(parts[i])
-            title = parts[i+1].strip()
-            body = parts[i+2].strip()
+            title = restore_blocks(parts[i+1].strip())
+            body = restore_blocks(parts[i+2].strip())
             sections.append(Section(title=title, level=level, content=body))
 
         return Storyboard(
@@ -61,3 +80,4 @@ class StoryboardParser:
             metadata=metadata,
             sections=sections
         )
+
