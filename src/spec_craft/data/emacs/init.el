@@ -17,6 +17,9 @@
 (add-hook 'python-ts-mode-hook 'eglot-ensure)
 (add-hook 'prog-mode-hook 'flymake-mode)
 
+;; Enable global auto revert to update buffers on external file modifications
+(global-auto-revert-mode 1)
+
 ;; Disable backups and lockfiles to keep the sandbox clean
 (setq make-backup-files nil)
 (setq create-lockfiles nil)

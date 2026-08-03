@@ -43,3 +43,34 @@ def test_emacs_manager_execute_command(mock_run, temp_workspace):
         command = args[0]
         assert "emacsclient" in command
         assert "(+ 1 1)" in command
+
+@patch("subprocess.run")
+def test_emacs_manager_eval_in_buffer(mock_run, temp_workspace):
+    manager = EmacsManager(temp_workspace)
+    mock_run.return_value = MagicMock(returncode=0, stdout="BufferContent")
+    
+    with patch.object(EmacsManager, "is_daemon_running", return_value=True):
+        result = manager.eval_in_buffer("test_file.py", "(some-elisp)")
+        assert result == "BufferContent"
+        assert mock_run.called
+        args, kwargs = mock_run.call_args
+        command = args[0]
+        assert "emacsclient" in command
+        # Verify the command contains revert-buffer and find-file-noselect but NOT save-buffer
+        eval_arg = command[-1]
+        assert "find-file-noselect" in eval_arg
+        assert "revert-buffer" in eval_arg
+        assert "some-elisp" in eval_arg
+        assert "save-buffer" not in eval_arg
+
+@patch("subprocess.run")
+def test_emacs_manager_start_daemon_timeout(mock_run, temp_workspace):
+    manager = EmacsManager(temp_workspace)
+    mock_run.return_value = MagicMock(returncode=0)
+    
+    # Mock is_daemon_running to always return False so it times out
+    with patch.object(EmacsManager, "is_daemon_running", return_value=False):
+        with pytest.raises(RuntimeError) as exc_info:
+            manager.start_daemon(max_wait=0.2, poll_interval=0.1)
+        assert "Failed to start Emacs daemon within" in str(exc_info.value)
+
