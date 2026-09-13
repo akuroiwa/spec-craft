@@ -8,7 +8,7 @@ release = '0.1.6'
 
 # -- General configuration ---------------------------------------------------
 extensions = [
-    'myst_parser',
+    'myst_nb',
     'sphinx_rtd_theme',
 ]
 
@@ -29,3 +29,6 @@ myst_enable_extensions = [
     "colon_fence",
     "deflist",
 ]
+
+# MyST-NB settings (Display cached notebook outputs without re-executing during build)
+nb_execution_mode = "off"

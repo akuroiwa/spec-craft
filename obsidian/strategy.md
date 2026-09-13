@@ -5,29 +5,36 @@ Spec-Craft is built on **Spec-Driven Development (SDD)**.
 - **Strategy (Obsidian)**: Defines the "What" and "Why". It is the project's soul.
 - **Tactics (spec-kit)**: Defines the "How". It handles iterative implementation cycles.
 
-## Current Milestone: v0.1.5 Reached
+## Current Milestone: v0.1.6 Reached
 
-The foundation of Spec-Craft is stable and the MCP prompt layer has been significantly improved.
+The foundation of Spec-Craft is stable and verified across multiple environments.
 
 ### What's new since v0.1.2
-- **Obsidian CLI Integration** (v0.1.5): When writing files to `obsidian/`, the AI now checks for the `obsidian` CLI and uses it to generate proper YAML front matter. Falls back to plain Markdown with manually-injected front matter if Obsidian is unavailable or declined.
-- **Prompt Clarity** (v0.1.4): Rewrote `BOOT_TACTICAL_KNOWLEDGE` to eliminate Gemini CLI misidentification of spec-kit slash commands as shell commands, mandatory TOML/SKILL.md reading before any SDD phase, and RST CJK inline markup rules.
-- **Multi-Agent Detection** (v0.1.3): `detector.py` now identifies Antigravity CLI automatically.
+- **Emacs Inspection & Parser Resilience** (v0.1.6 / Phase 014): Added `eval_in_buffer()` for safe read-only LSP/Flymake inspections without overwriting files; implemented daemon startup polling; added `global-auto-revert-mode` to `init.el`; and fixed `StoryboardParser` code-fence heading misdetection.
+- **Obsidian CLI Integration** (v0.1.5): Checks for `obsidian` CLI to generate front matter, with graceful fallback to manual front matter in plain Markdown.
+- **Prompt Clarity** (v0.1.4): Refined `BOOT_TACTICAL_KNOWLEDGE` to clarify tool boundaries, slash commands, and CJK markup.
+- **Multi-Agent Detection** (v0.1.3): `detector.py` automatically detects Antigravity CLI and other agents.
 
-### Established Capabilities (v0.1.2)
+### Established Capabilities
 - Multi-domain generation: 2D (SVG), 3D (Blender/Bonkei), CAD (JSCAD), BIM (Bonsai).
 - Visual Feedback: AI can "see" assets via SVG projections.
 - Isolated Editing: AI-dedicated Emacs sandbox with LSP/Linting.
 - Transparency: "Suggest-and-Confirm" workflow for secure operations.
 
-## Known Issues to Address (Phase 014)
+## Phase 015: Interactive Colab Notebook & Tutorial Integration
 
-Based on a detailed architecture review (2026-07-30):
-
-1. **`EmacsManager.edit_file()` always saves** (`save-buffer` is forced). A read-only inspection method (`eval_in_buffer`) is needed so the AI can query Flymake diagnostics and xref definitions without modifying files.
-2. **`init.el` startup race condition**: The 1-second sleep after `emacs --daemon` is insufficient when `package-install-selected-packages` fetches packages from the network. A health-check polling loop is needed in `start_daemon()`.
-3. **`init.el` missing `global-auto-revert-mode`**: When the AI edits a file directly and Emacs has the same buffer open, the in-memory buffer becomes stale and can overwrite the AI's changes on next `save-buffer`. Adding `(global-auto-revert-mode 1)` prevents this.
-4. **`parser.py` code-block heading misdetection**: The MULTILINE regex `^#{1,6}` matches `# comment` lines inside fenced code blocks. This splits sections incorrectly. A code-fence state-tracker or AST-based approach is needed.
+To enable hands-on evaluation, demo video creation (YouTube), and seamless user onboarding:
+1. **Google Colab Notebook (`docs/notebooks/spec_craft_quickstart.ipynb`)**:
+   - One-click environment setup: Ollama background server + lightweight QAT model selection (`gemma-2-2b-it` / `qwen2.5` / `gemma-4-qat`).
+   - CLI Tooling: Install `uv`, `sigoden/aichat`, and `spec-craft`.
+   - End-to-End SDD Workflow:
+     - Step 1: Generate an Obsidian strategic feature specification via `aichat`.
+     - Step 2: Parse and preview the strategic specification using `spec-craft` tools.
+     - Step 3: Trigger `spec-kit` automated workflows to produce code and unit tests.
+     - Step 4: Run tests and verify behavior directly within Colab.
+2. **Read the Docs & Sphinx Integration**:
+   - Integrated `myst-nb` into Sphinx documentation builder (`docs/source/conf.py` and `docs/requirements.txt`) with pre-rendered cache execution (`nb_execution_mode = "off"`).
+   - Embedded `[Open in Colab]` badges for instant cloud replication.
 
 ## Transition Note: Antigravity CLI / Multi-Agent Workflows
 This project supports multi-agent SDD workflows (Antigravity CLI, Gemini CLI, Claude Code, Aider).
@@ -37,7 +44,7 @@ This project supports multi-agent SDD workflows (Antigravity CLI, Gemini CLI, Cl
 2. Review the technical manual at [https://spec-craft.readthedocs.io/](https://spec-craft.readthedocs.io/).
 3. Use `spec-craft check-env` to verify the local environment.
 4. Continue using the SDD workflow (Specify → Plan → Tasks → Implement).
-5. Before writing any file to `obsidian/`, run `obsidian help` to detect Obsidian CLI availability (see `BOOT_TACTICAL_KNOWLEDGE` Section 6).
+5. Before writing any file to `obsidian/`, run `obsidian help` to detect Obsidian CLI availability.
 
 ## Future Roadmap
 - Deeper integration with architectural analysis tools (Bonsai/BlenderBIM).

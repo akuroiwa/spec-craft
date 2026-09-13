@@ -37,6 +37,7 @@ python_files = ["test_*.py"]
 [dependency-groups]
 dev = [
     "myst-parser>=4.0.1",
+    "myst-nb>=1.1.0",
     "pytest>=9.0.3",
     "sphinx>=8.1.3",
     "sphinx-intl>=2.3.2",

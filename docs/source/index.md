@@ -9,6 +9,7 @@ Welcome to the Spec-Craft documentation.
 strategy
 installation
 domain-guides
+notebooks/spec_craft_quickstart
 maintenance
 
 ```
