@@ -94,12 +94,16 @@ class WorkspaceDetector:
 
         status = []
 
-        # 1. spec-kit
-        has_speckit = shutil.which("speckit") is not None or (self.root_path / ".specify").is_dir()
+        # 1. spec-kit (specify-cli)
+        has_speckit = (
+            shutil.which("specify") is not None
+            or shutil.which("speckit") is not None
+            or (self.root_path / ".specify").is_dir()
+        )
         status.append({
             "tool_name": "spec-kit",
             "is_installed": bool(has_speckit),
-            "install_command": "pip install spec-kit" if not has_speckit else None
+            "install_command": "uv tool install specify-cli" if not has_speckit else None
         })
 
         # 2. obsidian

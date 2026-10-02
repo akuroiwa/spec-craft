@@ -226,3 +226,5 @@ node_modules/
 _research_references/OpenJSCAD.org/
 _research_references/IfcOpenShell/
 .spec-craft/emacs/
+/spec_craft_quickstart.ipynb
+/spec_craft_opencode.ipynb

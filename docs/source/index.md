@@ -10,6 +10,7 @@ strategy
 installation
 domain-guides
 notebooks/spec_craft_quickstart
+notebooks/spec_craft_opencode
 maintenance
 
 ```

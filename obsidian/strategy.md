@@ -24,14 +24,14 @@ The foundation of Spec-Craft is stable and verified across multiple environments
 ## Phase 015: Interactive Colab Notebook & Tutorial Integration
 
 To enable hands-on evaluation, demo video creation (YouTube), and seamless user onboarding:
-1. **Google Colab Notebook (`docs/notebooks/spec_craft_quickstart.ipynb`)**:
-   - One-click environment setup: Ollama background server + lightweight QAT model selection (`gemma-2-2b-it` / `qwen2.5` / `gemma-4-qat`).
-   - CLI Tooling: Install `uv`, `sigoden/aichat`, and `spec-craft`.
-   - End-to-End SDD Workflow:
-     - Step 1: Generate an Obsidian strategic feature specification via `aichat`.
-     - Step 2: Parse and preview the strategic specification using `spec-craft` tools.
-     - Step 3: Trigger `spec-kit` automated workflows to produce code and unit tests.
-     - Step 4: Run tests and verify behavior directly within Colab.
+1. **Google Colab Notebook Single Source of Truth (`docs/source/notebooks/`)**:
+   - **Placement Convention**: To seamlessly integrate with Sphinx (`docs/source/`) and `myst-nb`, notebook files are strictly placed only under `docs/source/notebooks/`. Duplicate files under `docs/notebooks/` or repository root must not be maintained.
+   - **A. Quickstart Notebook (`docs/source/notebooks/spec_craft_quickstart.ipynb`)**:
+     - Headless / automated batch execution: `sigoden/aichat` (installed via Rust/Cargo) invoked as a non-interactive CLI shell command + Ollama official Gemma 4 QAT + `specify-cli` (`spec-kit`) + `spec-craft`.
+     - End-to-end SDD automated pipeline (Obsidian strategy note -> StoryboardParser -> Code/Test generation -> pytest verification).
+   - **B. OpenCode MCP Notebook (`docs/source/notebooks/spec_craft_opencode.ipynb`)**:
+     - Interactive AI agent development: `opencode` (AI Coding Agent) + `spec-craft serve` (FastMCP server) + `specify-cli` (OpenCode integration).
+     - Interactive web terminal with `colab-xterm`, enabling hands-on developer-agent collaboration and YouTube video recording.
 2. **Read the Docs & Sphinx Integration**:
    - Integrated `myst-nb` into Sphinx documentation builder (`docs/source/conf.py` and `docs/requirements.txt`) with pre-rendered cache execution (`nb_execution_mode = "off"`).
    - Embedded `[Open in Colab]` badges for instant cloud replication.

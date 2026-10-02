@@ -24,17 +24,17 @@ Spec-Craft の基盤は安定しており、マルチ環境での動作が検証
 ## Phase 015: インタラクティブな Colab Notebook とチュートリアル統合
 
 ハンズオン検証、YouTube デモ動画制作、スムーズなユーザー導入を実現するため：
-1. **Google Colab ノートブック (`docs/notebooks/spec_craft_quickstart.ipynb`)**:
-   - ワンクリック環境構築: Ollama バックグラウンド起動 + 軽量 QAT モデル切り替え（`gemma-2-2b-it` / `qwen2.5` / `gemma-4-qat` 等）。
-   - CLI ツール群の導入: `uv`、`sigoden/aichat`、`spec-craft`。
-   - エンドツーエンドの SDD ワークフロー実演:
-     - Step 1: `aichat` による Obsidian 戦略仕様の生成。
-     - Step 2: `spec-craft` による戦略仕様の解析とプレビュー。
-     - Step 3: `spec-kit` 自動ワークフローによるコードおよびテストコードの生成。
-     - Step 4: Colab 上でのテスト実行と動作確認。
+1. **Google Colab ノートブックの単一ソース管理 (`docs/source/notebooks/`)**:
+   - **配置規約**: Sphinx (`docs/source/`) および `myst-nb` と連携するため、ノートブックの実体は `docs/source/notebooks/` 配下にのみ配置（単一の信頼できる情報源とする。`docs/notebooks/` 等の重複配置は行わない）。
+   - **A. Quickstart ノートブック (`docs/source/notebooks/spec_craft_quickstart.ipynb`)**:
+     - 完全自動バッチ実行: Rust/Cargo 経由の `sigoden/aichat` を CLI シェルコマンドとして非対話呼び出し + Ollama 公式 Gemma 4 QAT + `specify-cli` (`spec-kit`) + `spec-craft`。
+     - エンドツーエンドの SDD 自動パイプライン (Obsidian 戦略仕様 → StoryboardParser → コード・テスト生成 → pytest 検証)。
+   - **B. OpenCode MCP ノートブック (`docs/source/notebooks/spec_craft_opencode.ipynb`)**:
+     - 対話型 AI エージェント開発: `opencode` (AI Coding Agent) + `spec-craft serve` (FastMCP サーバー) + `specify-cli` (OpenCode integration)。
+     - `colab-xterm` による対話型 Web ターミナル起動により、ユーザーが実際に AI エージェントへ開発を依頼するハンズオンおよび YouTube デモ動画撮影環境を提供。
 2. **Read the Docs & Sphinx 連携**:
    - Sphinx ビルダーに `myst-nb` を統合（`docs/source/conf.py` および `docs/requirements.txt`）、セル再実行なしのキャッシュ表示（`nb_execution_mode = "off"`）を設定。
-   - `[Open in Colab]` バッジを設置し、クラウド上で即座に追試可能な導線を整備。
+   - 各ノートブックに `[Open in Colab]` バッジを設置し、クラウド上で即座に追試可能な導線を整備。
 
 ## Antigravity CLI およびマルチエージェント環境への移行に関する注記
 このプロジェクトはマルチエージェント SDD ワークフロー（Antigravity CLI、Gemini CLI、Claude Code、Aider）をサポートします。
