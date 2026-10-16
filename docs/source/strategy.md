@@ -7,12 +7,12 @@ Understanding the difference between strategy and tactics is key to the Spec-Cra
 
 - **Strategy (Obsidian)**:
   - **Focus**: "What" and "Why".
-  - **Content**: Storyboards, character settings, geometric principles, and long-term milestones.
-  - **Permanence**: Acts as the project's "soul" and persistent record.
+  - **Content**: Expands and details the Spec-Kit Constitution process, housing storyboards, domain models, geometric principles, and long-term milestones.
+  - **Permanence**: Acts as the project's persistent architectural record.
 - **Tactics (spec-kit)**:
   - **Focus**: "How".
-  - **Process**: Short-term SDD cycles (Specify → Plan → Implement).
-  - **Action**: Creating specific code files, generating SVG scenes, or building CAD models.
+  - **Process**: Short-term iterative SDD cycles via the Shorter Path (Specify → Plan → Tasks → Implement → Converge).
+  - **Action**: Creating modular code files, generating SVG scenes, building CAD models, and continuously converging codebase reality with specification intent.
 
 ## The Bridge
 Spec-Craft acts as the bridge, allowing AI agents to read the strategy in [Obsidian](https://obsidian.md/) and translate it into tactical tasks in [spec-kit](https://github.com/github/spec-kit).

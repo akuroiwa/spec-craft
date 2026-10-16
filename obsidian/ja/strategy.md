@@ -1,15 +1,16 @@
 # Spec-Craft 戦略ロードマップ
 
-## コア・フィロソフィー
+## コア・フィロソフィー: 戦略的ビジョンと戦術的収束
 Spec-Craft は**仕様駆動開発 (SDD)** に基づいています。
-- **戦略 (Obsidian)**: 「何を」「なぜ」作るかを定義します。プロジェクトの「魂」です。
-- **戦術 (spec-kit)**: 「どのように」作るかを定義します。反復的な実装サイクルを担当します。
+- **戦略 (Obsidian)**: 「何を」「なぜ」作るかを定義します。**Spec-Kit の Constitution（開発原則）プロセスを拡張・詳細化**し、実装タスク着手前にプロジェクトのアーキテクチャ方針、ドメインモデル、製品ロードマップを明文化します。
+- **戦術 (spec-kit)**: 「どのように」作るかを定義します。**Shorter Path (`specify` → `plan` → `tasks` → `implement` → `converge`)** を用いて反復的な実装サイクルを回し、仕様の意図と実装の乖離を継続的に収束（Convergence）させます。
 
-## 現在の到達点: v0.1.6 達成
+## 現在の到達点: v0.1.7 達成
 
 Spec-Craft の基盤は安定しており、マルチ環境での動作が検証されています。
 
 ### v0.1.2 以降の新機能
+- **Spec-Kit Convergence と Colab 連携** (v0.1.7 / Phase 015): 最新の Spec-Kit `/speckit-converge` コマンドおよび `.agents/skills/` を統合。Shorter Path (`specify` → `plan` → `tasks` → `implement` → `converge`) を確立。Quickstart ノートブックおよび OpenCode ノートブックを整備し、運用境界と制約事項を明記。
 - **Emacs 検査機能とパーサー堅牢化** (v0.1.6 / Phase 014): ファイルを上書きせずに安全に LSP/Flymake 診断を取得する `eval_in_buffer()` の追加、デーモン起動時のポーリングループ化、`init.el` への `global-auto-revert-mode` 追加、および `StoryboardParser` のコードフェンス内見出し誤検知の修正。
 - **Obsidian CLI 統合** (v0.1.5): `obsidian/` へのファイル書き込み時に `obsidian` CLI の存在を確認し、正しい YAML フロントマターを生成。未導入時はプレーン Markdown へフォールバック。
 - **プロンプト明確化** (v0.1.4): `BOOT_TACTICAL_KNOWLEDGE` を再設計し、spec-kit スラッシュコマンドとシェルコマンドの境界、CJK マークアップ規則を明確化。

@@ -2,9 +2,9 @@ schema_version: "1.0"
 workflow:
   id: "speckit"
   name: "Full SDD Cycle"
-  version: "1.0.0"
+  version: "1.1.0"
   author: "GitHub"
-  description: "Runs specify → plan → tasks → implement with review gates"
+  description: "Runs specify → plan → tasks → implement → converge with review gates"
 
 requires:
   speckit_version: ">=0.7.2"
@@ -58,6 +58,12 @@ steps:
 
   - id: implement
     command: speckit.implement
+    integration: "{{ inputs.integration }}"
+    input:
+      args: "{{ inputs.spec }}"
+
+  - id: converge
+    command: speckit.converge
     integration: "{{ inputs.integration }}"
     input:
       args: "{{ inputs.spec }}"

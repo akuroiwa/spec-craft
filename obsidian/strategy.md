@@ -1,15 +1,16 @@
 # Spec-Craft Strategic Roadmap
 
-## Core Philosophy
-Spec-Craft is built on **Spec-Driven Development (SDD)**.
-- **Strategy (Obsidian)**: Defines the "What" and "Why". It is the project's soul.
-- **Tactics (spec-kit)**: Defines the "How". It handles iterative implementation cycles.
+## Core Philosophy: Strategic Vision & Tactical Convergence
+Spec-Craft is built on **Spec-Driven Development (SDD)**:
+- **Strategy (Obsidian)**: Defines the "What" and "Why". It expands and details the **Spec-Kit Constitution process**, articulating architectural principles, domain models, and product roadmaps before implementation tasks begin.
+- **Tactics (spec-kit)**: Defines the "How". It drives iterative implementation using the **Shorter Path (`specify` → `plan` → `tasks` → `implement` → `converge`)**, continuously closing gaps between intended specifications and realized code.
 
-## Current Milestone: v0.1.6 Reached
+## Current Milestone: v0.1.7 Reached
 
 The foundation of Spec-Craft is stable and verified across multiple environments.
 
 ### What's new since v0.1.2
+- **Spec-Kit Convergence & Colab Integration** (v0.1.7 / Phase 015): Integrated Spec-Kit's latest `/speckit-converge` command and updated `.agents/skills/`; refined Shorter Path workflow (`specify` → `plan` → `tasks` → `implement` → `converge`); published quickstart and OpenCode notebooks with clear operational boundary and limitation guidelines.
 - **Emacs Inspection & Parser Resilience** (v0.1.6 / Phase 014): Added `eval_in_buffer()` for safe read-only LSP/Flymake inspections without overwriting files; implemented daemon startup polling; added `global-auto-revert-mode` to `init.el`; and fixed `StoryboardParser` code-fence heading misdetection.
 - **Obsidian CLI Integration** (v0.1.5): Checks for `obsidian` CLI to generate front matter, with graceful fallback to manual front matter in plain Markdown.
 - **Prompt Clarity** (v0.1.4): Refined `BOOT_TACTICAL_KNOWLEDGE` to clarify tool boundaries, slash commands, and CJK markup.

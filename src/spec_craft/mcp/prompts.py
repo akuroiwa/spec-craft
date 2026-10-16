@@ -176,7 +176,7 @@ There are TWO distinct tools involved in the SDD workflow:
 
 ## 1. CRITICAL — Slash Commands vs Shell Commands
 
-`/speckit.specify`, `/speckit.plan`, `/speckit.tasks`, `/speckit.implement`
+`/speckit.specify`, `/speckit.plan`, `/speckit.tasks`, `/speckit.implement`, `/speckit.converge`
 are **SLASH COMMANDS** — they are UI triggers in the AI agent's command
 interface (e.g., the `/` command palette in Gemini CLI or Antigravity).
 
@@ -234,6 +234,13 @@ When the user triggers `/speckit.implement`:
 1. Read `.gemini/commands/speckit.implement.toml`.
 2. Follow its step-by-step instructions, executing each shell command only
    after proposing it to the user.
+
+When the user triggers `/speckit.converge`:
+1. Read `.agents/skills/speckit-converge/SKILL.md` (or `.gemini/commands/speckit.converge.toml`).
+2. Assess the codebase against `spec.md`, `plan.md`, and `tasks.md`.
+3. If unmet or partial work is detected, append new tasks under a `## Phase N: Convergence`
+   section in `tasks.md` without modifying existing code or tasks.
+4. Report the findings; if tasks were appended, loop back to `/speckit.implement` until converged.
 
 **Propose each shell command to the user before running. Never run silently.**
 
